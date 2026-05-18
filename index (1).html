@@ -1,0 +1,2210 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Hybrid Protocol — Compounding Gains</title>
+<meta name="description" content="A sustainable cutting protocol for trained athletes. Build patterns that hold the result, not regimes that end at the rebound.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..700,0..100;1,9..144,300..700,0..100&family=Geist:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0a0908;
+  --bg-elevated: #141210;
+  --bg-card: #1a1815;
+  --bg-card-hover: #201d19;
+  --border: #2a2622;
+  --border-strong: #3a342d;
+  --text: #f4f1ec;
+  --text-muted: #8a8478;
+  --text-faded: #5a5650;
+  --accent: #d4a256;
+  --accent-bright: #e8b86d;
+  --accent-dim: rgba(212, 162, 86, 0.12);
+  --accent-border: rgba(212, 162, 86, 0.3);
+  --danger: #c4604a;
+  --danger-dim: rgba(196, 96, 74, 0.1);
+  --success: #7ba66f;
+  --success-dim: rgba(123, 166, 111, 0.1);
+  --info: #6c9bb8;
+  --info-dim: rgba(108, 155, 184, 0.1);
+}
+
+[data-theme="light"] {
+  --bg: #faf8f3;
+  --bg-elevated: #ffffff;
+  --bg-card: #ffffff;
+  --bg-card-hover: #f5f2eb;
+  --border: #e8e3d8;
+  --border-strong: #d0cabe;
+  --text: #1a1714;
+  --text-muted: #6a6258;
+  --text-faded: #9a9388;
+  --accent: #a87a31;
+  --accent-bright: #b8893d;
+  --accent-dim: rgba(168, 122, 49, 0.1);
+  --accent-border: rgba(168, 122, 49, 0.35);
+  --danger: #a04830;
+  --danger-dim: rgba(160, 72, 48, 0.08);
+  --success: #4a7340;
+  --success-dim: rgba(74, 115, 64, 0.08);
+  --info: #4a7590;
+  --info-dim: rgba(74, 117, 144, 0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Geist', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  font-size: 16px;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  overflow-x: hidden;
+}
+
+.mono {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-feature-settings: 'tnum' 1;
+}
+
+.serif {
+  font-family: 'Fraunces', Georgia, serif;
+  font-variation-settings: 'SOFT' 30, 'opsz' 96;
+}
+
+/* === NAVIGATION === */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(10, 9, 8, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+[data-theme="light"] nav {
+  background: rgba(250, 248, 243, 0.85);
+}
+
+.nav-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.brand-accent {
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.theme-toggle {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  padding: 0.5rem 0.8rem;
+  cursor: pointer;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  transition: all 0.2s ease;
+}
+
+.theme-toggle:hover {
+  color: var(--accent);
+  border-color: var(--accent-border);
+}
+
+/* === LAYOUT === */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.prose {
+  max-width: 680px;
+}
+
+section {
+  padding: 6rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+@media (max-width: 640px) {
+  section { padding: 4rem 0; }
+  .container { padding: 0 1.25rem; }
+}
+
+/* === HERO === */
+.hero {
+  padding: 8rem 0 6rem;
+  border-bottom: 1px solid var(--border);
+  position: relative;
+}
+
+.hero-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.hero-label::before {
+  content: '';
+  width: 24px;
+  height: 1px;
+  background: var(--accent);
+}
+
+.hero h1 {
+  font-family: 'Fraunces', serif;
+  font-variation-settings: 'SOFT' 30, 'opsz' 144, 'wght' 400;
+  font-size: clamp(2.5rem, 6vw, 5.5rem);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  margin-bottom: 2rem;
+  max-width: 900px;
+}
+
+.hero h1 em {
+  font-style: italic;
+  font-variation-settings: 'SOFT' 80, 'opsz' 144, 'wght' 300;
+  color: var(--accent);
+}
+
+.hero-sub {
+  font-size: 1.25rem;
+  line-height: 1.5;
+  color: var(--text-muted);
+  max-width: 600px;
+  margin-bottom: 3rem;
+}
+
+.hero-meta {
+  display: flex;
+  gap: 2rem;
+  flex-wrap: wrap;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  color: var(--text-faded);
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+}
+
+.hero-meta strong {
+  color: var(--text);
+  font-weight: 500;
+}
+
+/* === SECTION HEADERS === */
+.section-header {
+  margin-bottom: 4rem;
+}
+
+.section-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.section-num::before {
+  content: '';
+  width: 24px;
+  height: 1px;
+  background: var(--accent);
+}
+
+.section-header h2 {
+  font-family: 'Fraunces', serif;
+  font-variation-settings: 'SOFT' 30, 'opsz' 96, 'wght' 400;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.5rem;
+  max-width: 800px;
+}
+
+.section-header h2 em {
+  font-style: italic;
+  font-variation-settings: 'SOFT' 80, 'wght' 300;
+  color: var(--accent);
+}
+
+.section-header .lede {
+  font-size: 1.15rem;
+  color: var(--text-muted);
+  max-width: 680px;
+  line-height: 1.6;
+}
+
+/* === PROSE === */
+p { margin-bottom: 1.25rem; }
+.prose p:last-child { margin-bottom: 0; }
+
+.prose strong {
+  color: var(--text);
+  font-weight: 500;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid var(--accent-border);
+  transition: color 0.2s, border-color 0.2s;
+}
+
+a:hover {
+  color: var(--accent-bright);
+  border-bottom-color: var(--accent-bright);
+}
+
+/* === PULL QUOTE === */
+.pullquote {
+  font-family: 'Fraunces', serif;
+  font-variation-settings: 'SOFT' 50, 'opsz' 96, 'wght' 300;
+  font-style: italic;
+  font-size: clamp(1.5rem, 3vw, 2.25rem);
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  color: var(--text);
+  margin: 4rem 0;
+  padding-left: 2rem;
+  border-left: 2px solid var(--accent);
+  max-width: 720px;
+}
+
+/* === EXPANDABLES === */
+details {
+  margin-top: 2rem;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  transition: border-color 0.2s;
+}
+
+details[open] {
+  border-color: var(--border-strong);
+}
+
+summary {
+  padding: 1.25rem 1.5rem;
+  cursor: pointer;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: color 0.2s;
+}
+
+summary::-webkit-details-marker { display: none; }
+
+summary:hover { color: var(--accent); }
+
+summary::after {
+  content: '+';
+  font-family: 'Fraunces', serif;
+  font-size: 1.5rem;
+  color: var(--accent);
+  transition: transform 0.3s;
+  font-weight: 300;
+}
+
+details[open] summary::after {
+  transform: rotate(45deg);
+}
+
+.details-body {
+  padding: 0 1.5rem 1.5rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+  border-top: 1px solid var(--border);
+  padding-top: 1.5rem;
+}
+
+.details-body p { margin-bottom: 1rem; }
+.details-body p:last-child { margin-bottom: 0; }
+
+/* === CARDS === */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+  margin: 3rem 0;
+}
+
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  padding: 1.75rem;
+  transition: all 0.2s ease;
+}
+
+.card:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--border-strong);
+}
+
+.card-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.75rem;
+}
+
+.card-title {
+  font-family: 'Fraunces', serif;
+  font-variation-settings: 'opsz' 24;
+  font-size: 1.4rem;
+  line-height: 1.2;
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.01em;
+}
+
+.card-body {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+
+/* === DAY BUILDER === */
+.daybuilder {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  padding: 2rem;
+  margin: 3rem 0;
+}
+
+.daybuilder-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.daybuilder-title {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.daybuilder-time {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.5rem;
+  color: var(--accent);
+  font-weight: 500;
+}
+
+.daybuilder-time-label {
+  font-family: 'Geist', sans-serif;
+  font-size: 0.75rem;
+  color: var(--text-faded);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-right: 0.5rem;
+}
+
+.timeline {
+  position: relative;
+  height: 80px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  margin-bottom: 1rem;
+  overflow: hidden;
+}
+
+.timeline-block {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text);
+  transition: left 0.4s ease, width 0.4s ease, opacity 0.3s ease;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  padding: 0 0.5rem;
+}
+
+.timeline-block.sleep {
+  background: rgba(108, 155, 184, 0.15);
+  border-right: 1px solid rgba(108, 155, 184, 0.4);
+  color: var(--info);
+}
+
+.timeline-block.training {
+  background: rgba(212, 162, 86, 0.25);
+  border: 1px solid var(--accent);
+  color: var(--accent-bright);
+  font-weight: 500;
+  z-index: 3;
+}
+
+.timeline-block.carbs {
+  background: rgba(212, 162, 86, 0.1);
+  border-right: 1px solid rgba(212, 162, 86, 0.3);
+  color: var(--accent);
+  z-index: 2;
+}
+
+.timeline-block.cardio {
+  background: rgba(123, 166, 111, 0.15);
+  border-right: 1px solid rgba(123, 166, 111, 0.4);
+  color: var(--success);
+  z-index: 2;
+}
+
+.timeline-block.psmf {
+  background: rgba(140, 140, 140, 0.1);
+  border-right: 1px solid rgba(140, 140, 140, 0.3);
+  color: var(--text-muted);
+}
+
+.timeline-block.cutoff {
+  background: rgba(196, 96, 74, 0.25);
+  border-left: 2px solid var(--danger);
+  color: var(--danger);
+  font-weight: 500;
+  width: 3px !important;
+  padding: 0;
+  z-index: 4;
+}
+
+.timeline-hours {
+  display: flex;
+  justify-content: space-between;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  color: var(--text-faded);
+  margin-bottom: 1.5rem;
+  padding: 0 2px;
+}
+
+.daybuilder-slider {
+  width: 100%;
+  appearance: none;
+  -webkit-appearance: none;
+  background: var(--border);
+  height: 2px;
+  outline: none;
+  margin-bottom: 0.5rem;
+}
+
+.daybuilder-slider::-webkit-slider-thumb {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  background: var(--accent);
+  cursor: pointer;
+  border-radius: 50%;
+  border: 3px solid var(--bg-card);
+  box-shadow: 0 0 0 1px var(--accent);
+}
+
+.daybuilder-slider::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  background: var(--accent);
+  cursor: pointer;
+  border-radius: 50%;
+  border: 3px solid var(--bg-card);
+  box-shadow: 0 0 0 1px var(--accent);
+}
+
+.daybuilder-hint {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  color: var(--text-faded);
+  text-align: center;
+  letter-spacing: 0.05em;
+}
+
+.daybuilder-legend {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 0.75rem;
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border);
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.legend-swatch {
+  width: 12px;
+  height: 12px;
+  flex-shrink: 0;
+}
+
+.legend-swatch.sleep { background: rgba(108, 155, 184, 0.4); }
+.legend-swatch.training { background: var(--accent); }
+.legend-swatch.carbs { background: rgba(212, 162, 86, 0.3); }
+.legend-swatch.cardio { background: rgba(123, 166, 111, 0.4); }
+.legend-swatch.psmf { background: rgba(140, 140, 140, 0.3); }
+.legend-swatch.cutoff { background: var(--danger); }
+
+/* === PSMF VS HYBRID TOGGLE === */
+.compare {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  padding: 2rem;
+  margin: 3rem 0;
+}
+
+.compare-toggle {
+  display: flex;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  padding: 4px;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto 2.5rem;
+}
+
+.compare-btn {
+  flex: 1;
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  padding: 0.75rem 1rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-weight: 500;
+}
+
+.compare-btn.active {
+  background: var(--accent-dim);
+  color: var(--accent);
+  border: 1px solid var(--accent-border);
+}
+
+.compare-content {
+  display: none;
+  animation: fadeIn 0.3s ease;
+}
+
+.compare-content.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.compare-day {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+@media (max-width: 640px) {
+  .compare-day { grid-template-columns: 1fr; }
+}
+
+.compare-day-block {
+  background: var(--bg-elevated);
+  padding: 1.5rem;
+  border: 1px solid var(--border);
+}
+
+.compare-day-time {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  color: var(--text-faded);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.compare-day-meal {
+  font-family: 'Fraunces', serif;
+  font-size: 1.15rem;
+  line-height: 1.3;
+  margin-bottom: 0.5rem;
+}
+
+.compare-day-macros {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.compare-day-macros span {
+  margin-right: 1rem;
+}
+
+.compare-day-macros .carbs { color: var(--accent); }
+.compare-day-macros .protein { color: var(--info); }
+.compare-day-macros .fat { color: var(--text-muted); }
+
+.compare-consequences {
+  border-top: 1px solid var(--border);
+  padding-top: 2rem;
+}
+
+.compare-consequences-title {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+}
+
+.consequence-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1rem;
+}
+
+.consequence {
+  padding: 1rem;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-left-width: 2px;
+}
+
+.consequence.bad { border-left-color: var(--danger); }
+.consequence.good { border-left-color: var(--success); }
+.consequence.neutral { border-left-color: var(--text-muted); }
+
+.consequence-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-faded);
+  margin-bottom: 0.4rem;
+}
+
+.consequence-value {
+  font-size: 0.85rem;
+  color: var(--text);
+  line-height: 1.4;
+}
+
+/* === OAP CALCULATOR === */
+.oap {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  padding: 2rem;
+  margin: 3rem 0;
+}
+
+.oap-inputs {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+@media (max-width: 480px) {
+  .oap-inputs { grid-template-columns: 1fr; }
+}
+
+.oap-input-group label {
+  display: block;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.5rem;
+}
+
+.oap-input {
+  width: 100%;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 0.85rem 1rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.5rem;
+  font-weight: 500;
+  transition: border-color 0.2s;
+}
+
+.oap-input:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.oap-input::-webkit-outer-spin-button,
+.oap-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.oap-input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.oap-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-bottom: 2.5rem;
+}
+
+@media (max-width: 540px) {
+  .oap-stats { grid-template-columns: 1fr; }
+}
+
+.oap-stat {
+  background: var(--bg-elevated);
+  padding: 1.25rem;
+  border: 1px solid var(--border);
+}
+
+.oap-stat-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.65rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-faded);
+  margin-bottom: 0.5rem;
+}
+
+.oap-stat-value {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.75rem;
+  font-weight: 500;
+  color: var(--text);
+}
+
+.oap-stat-value.accent { color: var(--accent); }
+
+.oap-stat-unit {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-left: 0.25rem;
+  font-weight: 400;
+}
+
+.oap-bands {
+  position: relative;
+  height: 56px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  display: flex;
+  margin-bottom: 1rem;
+}
+
+.oap-band {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-faded);
+  border-right: 1px solid var(--border);
+  position: relative;
+  text-align: center;
+  padding: 0 0.5rem;
+}
+
+.oap-band:last-child { border-right: none; }
+
+.oap-band.active {
+  background: var(--accent-dim);
+  color: var(--accent);
+}
+
+.oap-marker {
+  position: absolute;
+  top: -8px;
+  width: 2px;
+  height: calc(100% + 16px);
+  background: var(--accent);
+  transition: left 0.4s ease;
+  z-index: 5;
+  pointer-events: none;
+}
+
+.oap-marker::before {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  width: 10px;
+  height: 10px;
+  background: var(--accent);
+  border-radius: 50%;
+}
+
+.oap-band-scale {
+  display: flex;
+  justify-content: space-between;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  color: var(--text-faded);
+  margin-bottom: 2rem;
+}
+
+.oap-recommendation {
+  padding: 1.5rem;
+  background: var(--accent-dim);
+  border: 1px solid var(--accent-border);
+  border-left: 2px solid var(--accent);
+}
+
+.oap-rec-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+}
+
+.oap-rec-text {
+  font-size: 1rem;
+  line-height: 1.55;
+  color: var(--text);
+}
+
+/* === PITFALLS === */
+.pitfall {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 1.5rem;
+  padding: 1.75rem 0;
+  border-top: 1px solid var(--border);
+}
+
+.pitfall:last-of-type {
+  border-bottom: 1px solid var(--border);
+}
+
+.pitfall-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8rem;
+  color: var(--danger);
+  letter-spacing: 0.05em;
+  padding-top: 0.2rem;
+}
+
+.pitfall-title {
+  font-family: 'Fraunces', serif;
+  font-variation-settings: 'opsz' 36;
+  font-size: 1.35rem;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.01em;
+}
+
+.pitfall-body {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* === SIGNALS === */
+.signals-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin: 3rem 0;
+}
+
+.signal {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  padding: 2rem;
+}
+
+.signal-icon {
+  width: 32px;
+  height: 32px;
+  border: 1px solid var(--accent);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+  color: var(--accent);
+}
+
+.signal-title {
+  font-family: 'Fraunces', serif;
+  font-variation-settings: 'opsz' 36;
+  font-size: 1.35rem;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.01em;
+}
+
+.signal-sub {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1rem;
+}
+
+.signal-body {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* === APPROACH COMPARISON === */
+.approach-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin: 3rem 0 2rem;
+}
+
+@media (max-width: 768px) {
+  .approach-grid { grid-template-columns: 1fr; }
+}
+
+.approach-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.approach-card.recommended {
+  border-color: var(--accent-border);
+  background: linear-gradient(180deg, var(--accent-dim) 0%, var(--bg-card) 80%);
+}
+
+.approach-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.approach-label.deprecated { color: var(--danger); }
+.approach-label.recommended-tag { color: var(--accent); }
+
+.approach-label::before {
+  content: '';
+  width: 18px;
+  height: 1px;
+  background: currentColor;
+}
+
+.approach-title {
+  font-family: 'Fraunces', serif;
+  font-variation-settings: 'opsz' 60, 'wght' 400;
+  font-size: 1.85rem;
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+  margin-bottom: 0.75rem;
+}
+
+.approach-sub {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+  margin-bottom: 1.5rem;
+}
+
+.approach-desc {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.approach-traits {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border-top: 1px solid var(--border);
+  padding-top: 1.5rem;
+}
+
+.approach-traits li {
+  padding: 0.6rem 0;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  line-height: 1.5;
+}
+
+.approach-traits li::before {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1rem;
+  flex-shrink: 0;
+  margin-top: -1px;
+}
+
+.approach-traits li.good::before {
+  content: '+';
+  color: var(--success);
+}
+
+.approach-traits li.bad::before {
+  content: '−';
+  color: var(--danger);
+}
+
+.approach-traits li.neutral::before {
+  content: '·';
+  color: var(--text-faded);
+}
+
+/* Comparison matrix */
+.matrix {
+  margin: 4rem 0 2rem;
+  border-top: 1px solid var(--border);
+}
+
+.matrix-row {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr 1.5fr;
+  border-bottom: 1px solid var(--border);
+  padding: 1.5rem 0;
+  align-items: start;
+  gap: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .matrix-row {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+}
+
+.matrix-dimension {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-faded);
+  padding-top: 2px;
+}
+
+.matrix-cell {
+  font-size: 0.92rem;
+  line-height: 1.5;
+  color: var(--text-muted);
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.matrix-cell .indicator {
+  flex-shrink: 0;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+  margin-top: -1px;
+}
+
+.matrix-cell.bad .indicator { color: var(--danger); }
+.matrix-cell.good .indicator { color: var(--success); }
+.matrix-cell.neutral .indicator { color: var(--text-faded); }
+
+@media (max-width: 768px) {
+  .matrix-cell::before {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-faded);
+    margin-right: 0.6rem;
+    flex-shrink: 0;
+  }
+  .matrix-cell.chronic::before { content: 'Chronic:'; }
+  .matrix-cell.cycled::before { content: 'Cycled:'; }
+}
+
+/* === SUBSTRATE STATE === */
+.equation-panel {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  padding: 2.5rem 2rem;
+  margin: 3rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.equation {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: clamp(0.85rem, 2vw, 1.15rem);
+  letter-spacing: 0.02em;
+  text-align: center;
+  color: var(--text);
+  line-height: 1.8;
+}
+
+.equation .term {
+  display: inline-block;
+  padding: 0.3rem 0.6rem;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: 2px;
+  margin: 0.2rem;
+}
+
+.equation .term.in { color: var(--success); border-color: rgba(123, 166, 111, 0.4); }
+.equation .term.out { color: var(--danger); border-color: rgba(196, 96, 74, 0.4); }
+.equation .term.result { color: var(--accent); border-color: var(--accent-border); background: var(--accent-dim); }
+.equation .op {
+  display: inline-block;
+  color: var(--text-muted);
+  font-weight: 500;
+  margin: 0 0.2rem;
+  font-size: 1.1em;
+}
+
+.equation-caption {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-faded);
+  text-align: center;
+  max-width: 540px;
+  line-height: 1.5;
+}
+
+.paths-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 1.25rem;
+  margin: 3rem 0 2rem;
+}
+
+@media (max-width: 768px) {
+  .paths-grid { grid-template-columns: 1fr; }
+}
+
+.path-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.path-num {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  margin-bottom: 0.75rem;
+}
+
+.path-equation {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+  margin-bottom: 1rem;
+  color: var(--text);
+  padding: 0.6rem 0.75rem;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  letter-spacing: 0.02em;
+  line-height: 1.6;
+}
+
+.path-equation .carbs-in { color: var(--success); }
+.path-equation .cardio-out { color: var(--danger); }
+.path-equation .arrow { color: var(--text-faded); }
+.path-equation .result { color: var(--accent); }
+
+.path-title {
+  font-family: 'Fraunces', serif;
+  font-variation-settings: 'opsz' 36;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.01em;
+}
+
+.path-desc {
+  color: var(--text-muted);
+  font-size: 0.88rem;
+  line-height: 1.55;
+}
+
+/* === FOOTER === */
+footer {
+  padding: 4rem 0;
+  text-align: center;
+  border-bottom: none;
+}
+
+.footer-brand {
+  font-family: 'Fraunces', serif;
+  font-variation-settings: 'opsz' 96, 'wght' 400;
+  font-style: italic;
+  font-size: 1.5rem;
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+}
+
+.footer-meta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--text-faded);
+  letter-spacing: 0.05em;
+  margin-bottom: 2rem;
+}
+
+.footer-disclaimer {
+  max-width: 580px;
+  margin: 0 auto;
+  font-size: 0.85rem;
+  color: var(--text-faded);
+  line-height: 1.6;
+}
+
+/* === UTILITIES === */
+.grid-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+@media (max-width: 768px) {
+  .grid-2 { grid-template-columns: 1fr; gap: 2.5rem; }
+}
+
+.side-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-faded);
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border);
+}
+
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="brand">compounding<span class="brand-accent">_gains</span> // protocol</div>
+    <button class="theme-toggle" id="themeToggle">Light</button>
+  </div>
+</nav>
+
+<!-- === HERO === -->
+<header class="hero">
+  <div class="container">
+    <div class="hero-label">A field manual for trained athletes</div>
+    <h1>Build patterns,<br>not <em>regimes</em>.</h1>
+    <p class="hero-sub">A sustainable cutting protocol designed for hybrid athletes — preserving training quality, sleep, and lean mass through a deficit, and transitioning cleanly to maintenance without the rebound.</p>
+    <div class="hero-meta">
+      <div><strong>READ</strong> — 20 min</div>
+      <div><strong>FOR</strong> — Trained athletes, ≤15% BF</div>
+      <div><strong>USE</strong> — Cutting and maintenance phases</div>
+    </div>
+  </div>
+</header>
+
+<!-- === SECTION 1 — THE PRINCIPLE === -->
+<section id="principle">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-num">01 / The Principle</div>
+      <h2>Most cuts fail at the <em>rebound</em>, not the deficit.</h2>
+      <p class="lede">The protocol that gets you there has to be the protocol you can stay on once you arrive. Otherwise you've built nothing — you've just rented a result.</p>
+    </div>
+
+    <div class="prose">
+      <p>Cutting is solved physiology. Eat less, train hard, sleep well, repeat. The reason most lean trained athletes still struggle isn't ignorance of the math — it's that the protocols they choose are designed to end. Aggressive deficits, near-zero carbs, fasted training, restrictive food rules: these work in the short term and collapse in the medium term because they were never compatible with a sustainable life.</p>
+
+      <p>The hybrid protocol is built around a different premise. The structure you eat in during the cut should be the structure you eat in at maintenance — only the volume changes. Carbs go where work happens. Protein anchors every day. Hydration and electrolytes are timed to protect sleep and training. Fermented foods and high-volume vegetables carry the satiety load. No food is forbidden; no day is "off the plan" because the plan is just <em>how you eat</em>.</p>
+
+      <p>The win isn't reaching the target weight. The win is reaching it without breaking what got you there.</p>
+    </div>
+
+    <div class="pullquote">
+      "The cut doesn't end at the target weight. Your habits do."
+    </div>
+  </div>
+</section>
+
+<!-- === SECTION 2 — THE PROTOCOL === -->
+<section id="protocol">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-num">02 / The Protocol</div>
+      <h2>Fuel goes where <em>work</em> happens.</h2>
+      <p class="lede">The day is structured around training demand. Carbs concentrate around the session that needs them. Protein anchors the whole day. PSMF-style meals carry the evening when calories are tight. Drag the slider to see how the structure shifts to your training time.</p>
+    </div>
+
+    <div class="daybuilder">
+      <div class="daybuilder-header">
+        <div class="daybuilder-title">Day builder</div>
+        <div><span class="daybuilder-time-label">Training time</span><span class="daybuilder-time mono" id="trainTime">14:00</span></div>
+      </div>
+
+      <div class="timeline" id="timeline"></div>
+
+      <div class="timeline-hours">
+        <span>00:00</span>
+        <span>06:00</span>
+        <span>12:00</span>
+        <span>18:00</span>
+        <span>24:00</span>
+      </div>
+
+      <input type="range" min="6" max="20" value="14" step="1" class="daybuilder-slider" id="trainSlider">
+      <div class="daybuilder-hint">Drag to set training time · 06:00 — 20:00</div>
+
+      <div class="daybuilder-legend">
+        <div class="legend-item"><span class="legend-swatch sleep"></span>Sleep</div>
+        <div class="legend-item"><span class="legend-swatch carbs"></span>Carb window</div>
+        <div class="legend-item"><span class="legend-swatch training"></span>Training</div>
+        <div class="legend-item"><span class="legend-swatch cardio"></span>Cardio</div>
+        <div class="legend-item"><span class="legend-swatch psmf"></span>PSMF meals</div>
+        <div class="legend-item"><span class="legend-swatch cutoff"></span>Fluid cutoff</div>
+      </div>
+    </div>
+
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-label">Pre-training</div>
+        <div class="card-title">Carbs + protein, 60–90 min out</div>
+        <div class="card-body">Glycogen-supportive meal anchoring the session. Sweet potato, oats, or rice with a complete protein source.</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Post-training</div>
+        <div class="card-title">Fast carbs + EAAs + protein</div>
+        <div class="card-body">Insulin sensitivity peaks here. Carb refill, leucine-rich protein, sodium and potassium replacement.</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Evening</div>
+        <div class="card-title">PSMF-style: protein + volume</div>
+        <div class="card-body">High protein, vegetables, fermented sides. Satiety on low calories. Carbs minimised where work is done for the day.</div>
+      </div>
+      <div class="card">
+        <div class="card-label">Rest day</div>
+        <div class="card-title">PSMF-leaning, carbs reduced</div>
+        <div class="card-body">Lower-but-not-zero carbs. Protein and volume unchanged. Sleep and recovery protected, never zero-carb depletion.</div>
+      </div>
+    </div>
+
+    <details>
+      <summary>Why this structure works</summary>
+      <div class="details-body">
+        <p>The carb-around-training pattern is nutrient timing applied correctly: glycogen demand varies dramatically across the training week, and aligning fuel intake with that demand is more efficient than eating the same carbs every day regardless of stimulus. Insulin sensitivity peaks post-training, so carbs land better when work has just been done.</p>
+        <p>PSMF-style evenings handle the hardest adherence window — late-day hunger — through high protein, high volume, fermented sides, and minimal fat. Most cut failures happen between 8 PM and bed. Building a meal structure that works at low calories during exactly that window removes the willpower tax.</p>
+        <p>Rest days reduce carbs because the training demand isn't there, but never go to zero. Zero-carb rest days crash leptin and thyroid output, compromise sleep, and leave you depleted for the next session. Lower-but-not-zero is the sustainable middle path.</p>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- === SECTION 3 — HYDRATION === -->
+<section id="hydration">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-num">03 / Hydration</div>
+      <h2>Front-load fluid. Protect <em>sleep</em>.</h2>
+      <p class="lede">Bedtime nocturia is one of the largest hidden disruptors of recovery. Cutting fluid intake roughly 5–6 hours before sleep aligns with the body's natural ADH rhythm — and improves both sleep quality and morning conditioning.</p>
+    </div>
+
+    <div class="grid-2">
+      <div>
+        <div class="side-label">The mechanism</div>
+        <div class="prose">
+          <p>Vasopressin (ADH) naturally rises in the evening to concentrate urine and reduce overnight production. A late liquid load fights this rhythm — you fill the bladder past its overnight capacity and wake to empty it, fragmenting sleep at exactly the time when growth hormone release, glycogen restoration, and cortisol regulation are most active.</p>
+          <p>Cutting fluid at 4–5 PM gives the kidneys 4–6 hours to process the day's load before lying down. You sleep through, you wake lighter, and the morning physique reads sharper because overnight ADH wasn't fighting an unnecessary fluid load.</p>
+        </div>
+      </div>
+
+      <div>
+        <div class="side-label">The structure</div>
+        <div class="prose">
+          <p><strong>Wake — 4 PM:</strong> Front-load the day's fluid in this window. 2.5–3.5L water plus electrolytes (sodium especially, around training and cardio). Coffee timed to wake + 90 min, last caffeine by midday.</p>
+          <p><strong>4–5 PM cutoff:</strong> Hard stop on standalone drinking. Sips with dinner to swallow food are fine; standalone glasses are not.</p>
+          <p><strong>Evening — bed:</strong> Food-water from vegetables, dal, and fermented sides continues hydration mechanically — slowly absorbed, no bladder loading. The cutoff is on liquids, not nutrition.</p>
+        </div>
+      </div>
+    </div>
+
+    <details>
+      <summary>The earliest safe cutoff</summary>
+      <div class="details-body">
+        <p>Approximately 6 hours pre-bed is the practical floor for liquid cutoff. Beyond that you cross from "smart timing" into mild dehydration territory: plasma volume contracts before sleep, and overnight respiratory and insensible losses (300–500ml) stack on top. The signs you've gone too early: waking thirsty mid-night, dark concentrated morning urine, calf cramps, morning headache, elevated resting heart rate.</p>
+        <p>The cutoff anchors to bedtime, not the clock. Sleeping later → cutoff later. The 4–5 PM number assumes a 10–11 PM bedtime. The principle scales.</p>
+        <p>Food-water provides a meaningful buffer. Someone eating vegetables, dal, and salads at dinner gets 400–600ml of slowly-absorbed fluid during the evening, which extends effective hydration well past the liquid cutoff without loading the bladder.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>Is this a healthy long-term habit?</summary>
+      <div class="details-body">
+        <p>For most adults, yes — and the magnitude of benefit scales with how prone someone is to nocturia. The protocol works with the body's diurnal ADH rhythm rather than against it, and at adequate total daily intake there's no chronic dehydration risk. Athletes with significant cardio volume and people over 40 benefit most.</p>
+        <p>The one watch-out is thirst threshold recalibration: chronic mild under-hydration can shift the thirst setpoint downward over weeks to months. Counter this by tracking total daily intake explicitly during the front-loaded window rather than going by thirst, especially on heavy training or hot days.</p>
+        <p>If you're eating substantial vegetables, fruit, and broth-based foods throughout the day, food-water keeps total fluid intake comfortably high even with an aggressive liquid cutoff. The combination is not just safe — it's arguably optimal for sleep and morning conditioning.</p>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- === SECTION 4 — CARB STRATEGY === -->
+<section id="carbs">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-num">04 / Strategy</div>
+      <h2>PSMF principles, selectively <em>applied</em>.</h2>
+      <p class="lede">Strict PSMF is an aggressive medical protocol designed for sedentary populations. The principles are useful; the wholesale adoption is not. Toggle below to see what a day looks like under each, and where the consequences diverge.</p>
+    </div>
+
+    <div class="compare">
+      <div class="compare-toggle">
+        <button class="compare-btn active" data-target="hybrid">Hybrid Protocol</button>
+        <button class="compare-btn" data-target="strict">Strict PSMF</button>
+      </div>
+
+      <div class="compare-content active" id="content-hybrid">
+        <div class="compare-day">
+          <div class="compare-day-block">
+            <div class="compare-day-time">07:00 — Breakfast</div>
+            <div class="compare-day-meal">Oats, whey protein, berries, electrolytes</div>
+            <div class="compare-day-macros mono">
+              <span class="carbs">C 55g</span>
+              <span class="protein">P 35g</span>
+              <span class="fat">F 6g</span>
+            </div>
+          </div>
+          <div class="compare-day-block">
+            <div class="compare-day-time">12:30 — Pre-training</div>
+            <div class="compare-day-meal">Sweet potato, chicken, kimchi</div>
+            <div class="compare-day-macros mono">
+              <span class="carbs">C 60g</span>
+              <span class="protein">P 45g</span>
+              <span class="fat">F 5g</span>
+            </div>
+          </div>
+          <div class="compare-day-block">
+            <div class="compare-day-time">15:00 — Post-training</div>
+            <div class="compare-day-meal">Cottage cheese, vegan protein, banana</div>
+            <div class="compare-day-macros mono">
+              <span class="carbs">C 30g</span>
+              <span class="protein">P 50g</span>
+              <span class="fat">F 2g</span>
+            </div>
+          </div>
+          <div class="compare-day-block">
+            <div class="compare-day-time">19:30 — Dinner</div>
+            <div class="compare-day-meal">Tuna salad, pickles, kimchi, vegetables</div>
+            <div class="compare-day-macros mono">
+              <span class="carbs">C 12g</span>
+              <span class="protein">P 45g</span>
+              <span class="fat">F 8g</span>
+            </div>
+          </div>
+        </div>
+        <div class="compare-consequences">
+          <div class="compare-consequences-title">Physiological consequences</div>
+          <div class="consequence-grid">
+            <div class="consequence good">
+              <div class="consequence-label">Training quality</div>
+              <div class="consequence-value">Preserved — pulling strength holds, neural quality intact</div>
+            </div>
+            <div class="consequence good">
+              <div class="consequence-label">Hormones</div>
+              <div class="consequence-value">Modest impact — T3, leptin, testosterone preserved</div>
+            </div>
+            <div class="consequence good">
+              <div class="consequence-label">Sleep</div>
+              <div class="consequence-value">Protected by carbs, fluid cutoff, electrolytes</div>
+            </div>
+            <div class="consequence good">
+              <div class="consequence-label">Satiety</div>
+              <div class="consequence-value">Structural — protein, volume, ferments, fluid</div>
+            </div>
+            <div class="consequence good">
+              <div class="consequence-label">Mindset</div>
+              <div class="consequence-value">Continuous, principled, integrated with life</div>
+            </div>
+            <div class="consequence good">
+              <div class="consequence-label">Sustainability</div>
+              <div class="consequence-value">Indefinitely maintainable; clean transition</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="compare-content" id="content-strict">
+        <div class="compare-day">
+          <div class="compare-day-block">
+            <div class="compare-day-time">07:00 — Breakfast</div>
+            <div class="compare-day-meal">Egg whites, spinach, hot sauce</div>
+            <div class="compare-day-macros mono">
+              <span class="carbs">C 3g</span>
+              <span class="protein">P 30g</span>
+              <span class="fat">F 1g</span>
+            </div>
+          </div>
+          <div class="compare-day-block">
+            <div class="compare-day-time">12:00 — Lunch</div>
+            <div class="compare-day-meal">Chicken breast, broccoli, no sauce</div>
+            <div class="compare-day-macros mono">
+              <span class="carbs">C 6g</span>
+              <span class="protein">P 50g</span>
+              <span class="fat">F 4g</span>
+            </div>
+          </div>
+          <div class="compare-day-block">
+            <div class="compare-day-time">17:00 — Snack</div>
+            <div class="compare-day-meal">Tuna, cucumbers</div>
+            <div class="compare-day-macros mono">
+              <span class="carbs">C 2g</span>
+              <span class="protein">P 30g</span>
+              <span class="fat">F 1g</span>
+            </div>
+          </div>
+          <div class="compare-day-block">
+            <div class="compare-day-time">20:00 — Dinner</div>
+            <div class="compare-day-meal">Cod, asparagus, lemon</div>
+            <div class="compare-day-macros mono">
+              <span class="carbs">C 4g</span>
+              <span class="protein">P 45g</span>
+              <span class="fat">F 2g</span>
+            </div>
+          </div>
+        </div>
+        <div class="compare-consequences">
+          <div class="compare-consequences-title">Physiological consequences</div>
+          <div class="consequence-grid">
+            <div class="consequence bad">
+              <div class="consequence-label">Training quality</div>
+              <div class="consequence-value">Compromised — depleted glycogen, force drops, neural fog</div>
+            </div>
+            <div class="consequence bad">
+              <div class="consequence-label">Hormones</div>
+              <div class="consequence-value">T3 and leptin crash, cortisol elevates</div>
+            </div>
+            <div class="consequence bad">
+              <div class="consequence-label">Sleep</div>
+              <div class="consequence-value">Compromised by zero evening carbs and cortisol drift</div>
+            </div>
+            <div class="consequence neutral">
+              <div class="consequence-label">Satiety</div>
+              <div class="consequence-value">Restriction-driven, willpower-dependent, variable</div>
+            </div>
+            <div class="consequence bad">
+              <div class="consequence-label">Mindset</div>
+              <div class="consequence-value">Binary — "on diet" vs "off diet", fear-based</div>
+            </div>
+            <div class="consequence bad">
+              <div class="consequence-label">Sustainability</div>
+              <div class="consequence-value">2–12 week protocols; rebound risk high after exit</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <details>
+      <summary>The historical context of PSMF</summary>
+      <div class="details-body">
+        <p>PSMF (Protein-Sparing Modified Fasting) was developed in the 1970s as a medically supervised protocol for severely obese sedentary patients who needed aggressive short-term weight loss with lean mass preservation. Its design parameters reflect that population — extremely low calories, near-zero carbs, minimal fat, very high protein relative to mass — because the goal was rapid weight reduction over 8–12 weeks in people whose physiology could tolerate the deficit and whose lifestyle didn't demand performance from it.</p>
+        <p>Applying that protocol unchanged to a lean trained athlete with multi-month performance goals is a category error. Same name, different problem. The hybrid version takes the useful principles (high protein anchoring, vegetable volume, fermented satiety) and applies them where they earn their keep — without inheriting the costs that aren't worth paying for a performance athlete.</p>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- === SECTION 5 — SUBSTRATE STATE === -->
+<section id="substrate">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-num">05 / Substrate</div>
+      <h2>The body doesn't care <em>how</em> you got depleted.</h2>
+      <p class="lede">Glycogen end-state is what triggers the hormonal cascade. You can reach it through dietary restriction. You can reach it through depleting cardio. The signals respond to the state, not to which side of the equation produced it.</p>
+    </div>
+
+    <div class="equation-panel">
+      <div class="equation">
+        <span class="term in">dietary carbs</span>
+        <span class="op">−</span>
+        <span class="term out">cardio carb oxidation</span>
+        <span class="op">=</span>
+        <span class="term result">end-of-day glycogen state</span>
+      </div>
+      <div class="equation-caption">What the body responds to: the resulting state, regardless of dietary versus activity inputs.</div>
+    </div>
+
+    <div class="prose">
+      <p>The standard framing of low-carb days assumes restriction is the only path to a depleted glycogen state. Physiologically, this isn't true. A trained athlete with 400–500g of muscle glycogen plus 80–100g in the liver can reach significantly depleted stores through hard cardio alone — 90 minutes at 200–230W on the elliptical oxidises roughly 250–350g of carbohydrate-equivalent energy, leaving end-of-day glycogen levels similar to a low-carb dietary day with less activity.</p>
+
+      <p>The hormonal signals respond to the state, not the cause. Increased AMPK signalling, leptin compression, mitochondrial biogenesis, autophagy markers, fat oxidation upregulation — all triggered by acute energy availability and depleted substrate stores rather than by dietary carb count specifically. The body knows it's depleted. It doesn't know whether you got there by eating less or burning more.</p>
+    </div>
+
+    <div class="paths-grid">
+      <div class="path-card">
+        <div class="path-num">PATH 1</div>
+        <div class="path-equation"><span class="carbs-in">50g carbs</span> <span class="arrow">−</span> <span class="cardio-out">100g oxidation</span> <span class="arrow">→</span> <span class="result">depleted</span></div>
+        <div class="path-title">Restriction-dominant</div>
+        <div class="path-desc">Low dietary carbs, modest cardio. The classic PSMF rest day. Cleanest deficit math, hardest adherence, most psychological cost.</div>
+      </div>
+
+      <div class="path-card">
+        <div class="path-num">PATH 2</div>
+        <div class="path-equation"><span class="carbs-in">100g carbs</span> <span class="arrow">−</span> <span class="cardio-out">150g oxidation</span> <span class="arrow">→</span> <span class="result">depleted</span></div>
+        <div class="path-title">Balanced</div>
+        <div class="path-desc">Moderate carbs, moderate cardio. Comfortable middle ground. Trains both substrate utilisation and dietary discipline without extreme of either.</div>
+      </div>
+
+      <div class="path-card">
+        <div class="path-num">PATH 3</div>
+        <div class="path-equation"><span class="carbs-in">200g carbs</span> <span class="arrow">−</span> <span class="cardio-out">250g oxidation</span> <span class="arrow">→</span> <span class="result">depleted</span></div>
+        <div class="path-title">Cardio-dominant</div>
+        <div class="path-desc">Moderate dietary carbs, depleting cardio session. Better training fuel, better adherence, higher acute fatigue. Useful around social schedules.</div>
+      </div>
+    </div>
+
+    <details>
+      <summary>Where the paths diverge</summary>
+      <div class="details-body">
+        <p>The equivalence holds for end-of-day glycogen state and most of the hormonal cascade, but not for everything. Insulin exposure differs — the moderate-carb path includes postprandial insulin episodes that the low-carb path doesn't, which has minor implications for muscle protein synthesis and substrate partitioning. Substrate utilisation during the cardio itself differs — low-carb days force earlier fat oxidation during the session, which trains metabolic flexibility specifically. Recovery state differs — moderate-carb-plus-cardio days leave more residual substrate for overnight recovery than restriction days do.</p>
+        <p>For most physique outcomes the differences are small. For specific endurance adaptations (fat oxidation capacity, mitochondrial density), the strict restriction path produces marginally stronger adaptations. For training quality preservation across a long cut, the moderate-carb-plus-cardio path is meaningfully better.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>Strategic applications</summary>
+      <div class="details-body">
+        <p><strong>Social schedules.</strong> Days with planned dinners or events where dietary restriction is socially costly: schedule the long cardio session before the meal to deplete glycogen first. The carbs you eat fill empty stores rather than overflowing into fat synthesis pathways. End-of-day state similar to a restricted day; psychological cost much lower.</p>
+        <p><strong>Pre-refeed.</strong> Approaching a planned higher-calorie day: a depleting cardio session beforehand maximises the carbs that go into muscle storage rather than fat. Depleted muscle is exceptionally good at absorbing carbs — this is the principle endurance athletes use for carb-loading without fat gain.</p>
+        <p><strong>Variety prevention.</strong> Running the same restriction pattern for weeks produces metabolic and psychological adaptation. Occasionally substituting a cardio-dominant depletion day breaks the pattern and prevents the body from settling into a single adaptive response.</p>
+        <p><strong>Caution.</strong> Don't use this as a wholesale replacement for restriction days. The total cardio load matters — substituting cardio-dominant depletion for every restriction day stacks recovery costs and joint wear across the week. Use it as one tool among several, not the default.</p>
+      </div>
+    </details>
+
+    <div class="pullquote">
+      "Multiple paths to the same physiological endpoint. The choice between them comes down to which is most sustainable for the day in front of you."
+    </div>
+  </div>
+</section>
+
+<!-- === SECTION 6 — APPROACH COMPARISON === -->
+<section id="approach">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-num">06 / Approach</div>
+      <h2>Two paths to the <em>same</em> scale weight.</h2>
+      <p class="lede">Chronic deficit with high cardio gets you there. So does calorie-cycled rest days with protected training. The endpoint weights are similar; what you arrive with is not.</p>
+    </div>
+
+    <div class="approach-grid">
+      <div class="approach-card">
+        <div class="approach-label deprecated">Default approach</div>
+        <div class="approach-title">Chronic deficit + high cardio</div>
+        <div class="approach-sub">Sustained moderate restriction · daily long cardio</div>
+        <div class="approach-desc">Every day at the same modest deficit, every day with significant cardio volume, every day partially recovered. The protocol most lean dieters end up running by default. It works on the scale; the cumulative cost compounds quietly.</div>
+        <ul class="approach-traits">
+          <li class="neutral">Cognitively simple — one pattern repeated</li>
+          <li class="bad">Continuous low-grade stress, no genuine recovery</li>
+          <li class="bad">Hormonal cascade compresses across the cut</li>
+          <li class="bad">Cardio compensation reduces real-world deficit</li>
+          <li class="bad">Training quality degrades in the second half</li>
+          <li class="bad">Rebound-prone transition to maintenance</li>
+        </ul>
+      </div>
+
+      <div class="approach-card recommended">
+        <div class="approach-label recommended-tag">Recommended</div>
+        <div class="approach-title">PSMF rest days + protected training</div>
+        <div class="approach-sub">Concentrated deficit on rest days · full fuelling on training days</div>
+        <div class="approach-desc">Calorie cycling that matches intake to demand. Rest days carry the deficit through PSMF-style meals. Training days run at higher intake to protect strength and recovery. Same weekly energy balance, very different physiological signature.</div>
+        <ul class="approach-traits">
+          <li class="good">Stress concentrated where the body can absorb it</li>
+          <li class="good">Hormonal architecture preserved across the cut</li>
+          <li class="good">Training quality protected on training days</li>
+          <li class="good">Genuine recovery on rest days, not partial</li>
+          <li class="good">Clean transition to maintenance — eating pattern persists</li>
+          <li class="neutral">Higher planning load — requires day-to-day attention</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="matrix">
+      <div class="matrix-row">
+        <div class="matrix-dimension">Hormones</div>
+        <div class="matrix-cell chronic bad"><span class="indicator">−</span><span>Leptin, T3, testosterone compress and stay compressed</span></div>
+        <div class="matrix-cell cycled good"><span class="indicator">+</span><span>Training days feed the signal enough to prevent full downregulation</span></div>
+      </div>
+      <div class="matrix-row">
+        <div class="matrix-dimension">Training quality</div>
+        <div class="matrix-cell chronic bad"><span class="indicator">−</span><span>Sessions fuelled by chronically depleted body, lifts degrade</span></div>
+        <div class="matrix-cell cycled good"><span class="indicator">+</span><span>Training days fully fuelled, strength baseline holds</span></div>
+      </div>
+      <div class="matrix-row">
+        <div class="matrix-dimension">Recovery</div>
+        <div class="matrix-cell chronic bad"><span class="indicator">−</span><span>Joints, tendons, CNS never fully reset</span></div>
+        <div class="matrix-cell cycled good"><span class="indicator">+</span><span>Rest days deliver real recovery, not just absence of lifting</span></div>
+      </div>
+      <div class="matrix-row">
+        <div class="matrix-dimension">Cardio cost</div>
+        <div class="matrix-cell chronic bad"><span class="indicator">−</span><span>Body adapts: efficiency rises, NEAT drops, real deficit shrinks</span></div>
+        <div class="matrix-cell cycled good"><span class="indicator">+</span><span>Varied demand prevents the adaptation, deficit stays honest</span></div>
+      </div>
+      <div class="matrix-row">
+        <div class="matrix-dimension">Sleep</div>
+        <div class="matrix-cell chronic bad"><span class="indicator">−</span><span>Cortisol elevation and low leptin fragment sleep across the cut</span></div>
+        <div class="matrix-cell cycled good"><span class="indicator">+</span><span>Rest day evenings protect deep sleep; cortisol resets weekly</span></div>
+      </div>
+      <div class="matrix-row">
+        <div class="matrix-dimension">Psychology</div>
+        <div class="matrix-cell chronic bad"><span class="indicator">−</span><span>Continuous restriction; food becomes a daily negotiation</span></div>
+        <div class="matrix-cell cycled neutral"><span class="indicator">·</span><span>Discipline concentrated on specific days; rest of week feels normal</span></div>
+      </div>
+      <div class="matrix-row">
+        <div class="matrix-dimension">Maintenance handoff</div>
+        <div class="matrix-cell chronic bad"><span class="indicator">−</span><span>Suppressed metabolism + volatile hunger = rapid regain</span></div>
+        <div class="matrix-cell cycled good"><span class="indicator">+</span><span>Cycling pattern continues; just dial fewer PSMF days, same foods</span></div>
+      </div>
+      <div class="matrix-row">
+        <div class="matrix-dimension">Long-term cost</div>
+        <div class="matrix-cell chronic bad"><span class="indicator">−</span><span>Compounds across multiple cuts: metabolic adaptation, joint wear</span></div>
+        <div class="matrix-cell cycled good"><span class="indicator">+</span><span>Closer to evolutionary pattern — periods of plenty and scarcity</span></div>
+      </div>
+    </div>
+
+    <details>
+      <summary>Where chronic deficit is actually fine</summary>
+      <div class="details-body">
+        <p>This isn't a universal indictment of the chronic approach. For someone early in their training career, or someone with significant fat to lose (above 15–18% body fat), or someone who genuinely won't manage the cognitive load of varying intake by day type, chronic moderate deficit works fine. The body has more margin to absorb the stress when starting from a higher body fat percentage. The hormonal compression matters less when you're starting from a metabolically unhealthy baseline.</p>
+        <p>The trade-off becomes meaningful at lower body fat (sub-12% for trained males) and with significant existing muscle mass — exactly the population this protocol is built for. The PSMF rest day approach is more sophisticated than most early-stage dieters need, and the best protocol is the one you'll actually run.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>The deeper principle behind both</summary>
+      <div class="details-body">
+        <p>Both approaches produce similar scale weight outcomes when the weekly energy balance is matched. The difference is what you have at the end. Chronic deficit plus cardio produces lower scale weight with degraded metabolism, compromised strength, accumulated joint wear, and difficult maintenance transitions. PSMF rest day cycling produces similar scale weight with preserved metabolism, intact strength, joint health protected, and a clean handoff to maintenance.</p>
+        <p>The ending matters more than the journey, because the ending is where you live afterwards. Physique athletes who maintain their results across decades understand that the cut is not the goal — maintenance is the goal, and the cut is just a method of getting there. The protocol that gets you there in better condition to maintain is the better protocol, even if it's slightly slower or more complex.</p>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- === SECTION 7 — PITFALLS === -->
+<section id="pitfalls">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-num">07 / Pitfalls</div>
+      <h2>What <em>breaks</em> long cuts.</h2>
+      <p class="lede">The failures aren't usually about calorie counting — they're about chosen structures that aren't compatible with sustained performance. Recognising the patterns is half the defence.</p>
+    </div>
+
+    <div>
+      <div class="pitfall">
+        <div class="pitfall-num">01</div>
+        <div>
+          <div class="pitfall-title">Aggressive deficits at low body fat</div>
+          <div class="pitfall-body">Below ~12% in trained males, the body protects fat stores more aggressively and the deficit gets paid in muscle and water. Anything beyond 0.5kg/week of loss at this point is mostly lean mass and bound water, not fat. The scale moves; the physique doesn't improve.</div>
+        </div>
+      </div>
+
+      <div class="pitfall">
+        <div class="pitfall-num">02</div>
+        <div>
+          <div class="pitfall-title">Strict PSMF as a complete protocol</div>
+          <div class="pitfall-body">Borrowing the meal structure for tight windows: useful. Adopting wholesale: a category error for trained athletes. Builds a binary mental relationship with food, creates rebound patterns, and never integrates into the maintenance phase that has to follow.</div>
+        </div>
+      </div>
+
+      <div class="pitfall">
+        <div class="pitfall-num">03</div>
+        <div>
+          <div class="pitfall-title">ESE-style fasting during deep cuts</div>
+          <div class="pitfall-body">Twice-weekly 24-hour fasts on top of an existing deficit pushes weekly energy deficit into territory that pulls hard on LBM. The protocol works fine for body recomp at maintenance; layered onto an existing cut at low body fat, it accelerates loss at the cost of what you're trying to preserve.</div>
+        </div>
+      </div>
+
+      <div class="pitfall">
+        <div class="pitfall-num">04</div>
+        <div>
+          <div class="pitfall-title">Zero-carb rest days</div>
+          <div class="pitfall-body">Rest days don't need the carb load of training days, but they also shouldn't be aggressive zero-carb. Going too low crashes leptin and thyroid across the day, compromises sleep, and leaves you depleted for the next session. Lower-but-not-zero is the sustainable middle.</div>
+        </div>
+      </div>
+
+      <div class="pitfall">
+        <div class="pitfall-num">05</div>
+        <div>
+          <div class="pitfall-title">Adding cardio in the final weeks</div>
+          <div class="pitfall-body">The classic late-cut acceleration mistake. More cardio in already-low-energy weeks doesn't proportionally accelerate fat loss; it crushes recovery, elevates cortisol, and degrades the strength baseline. Hold cardio steady, hold the deficit, finish patiently.</div>
+        </div>
+      </div>
+
+      <div class="pitfall">
+        <div class="pitfall-num">06</div>
+        <div>
+          <div class="pitfall-title">Reading the daily scale</div>
+          <div class="pitfall-body">Daily morning weight has a noise floor of 500–800g from fluid, glycogen, and bowel content turnover. Trying to interpret day-over-day changes as fat loss signal is statistically indistinguishable from rolling dice. Trust the 7-day rolling average; ignore the daily.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- === SECTION 8 — SIGNALS === -->
+<section id="signals">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-num">08 / Signals</div>
+      <h2>What to <em>watch</em>.</h2>
+      <p class="lede">The scale is the lagging indicator. The leading indicators — sleep, strength, hunger pattern, energy — tell you whether the protocol is working long before the weekly average confirms it.</p>
+    </div>
+
+    <div class="signals-grid">
+      <div class="signal">
+        <div class="signal-icon mono">01</div>
+        <div class="signal-sub">Most reliable</div>
+        <div class="signal-title">Strength holds</div>
+        <div class="signal-body">If your key lifts (weighted pull-ups, bench press top set, squat working weight) are holding within 5%, the deficit is sustainable. Significant drops are the first sign the deficit has gone too aggressive or recovery is failing — adjust before the scale tells you.</div>
+      </div>
+
+      <div class="signal">
+        <div class="signal-icon mono">02</div>
+        <div class="signal-sub">Earliest warning</div>
+        <div class="signal-title">Sleep stays intact</div>
+        <div class="signal-body">Waking earlier than usual, feeling unrested despite adequate hours, or needing more sleep to feel the same: leading indicators that the deficit is biting. Sleep quality fails before the scale plateaus. Address it via diet break, not via pushing harder.</div>
+      </div>
+
+      <div class="signal">
+        <div class="signal-icon mono">03</div>
+        <div class="signal-sub">Trend, not point</div>
+        <div class="signal-title">Weekly weight average</div>
+        <div class="signal-body">Daily weight is dominated by fluid and glycogen noise (±500–800g). The 7-day rolling average is signal. A loss of 0.3–0.5kg/week is sustainable at low body fat. Beyond that the additional loss is mostly lean tissue, not fat — counterproductive at your conditioning.</div>
+      </div>
+
+      <div class="signal">
+        <div class="signal-icon mono">04</div>
+        <div class="signal-sub">Visual confirmation</div>
+        <div class="signal-title">Mirror runs ahead of scale</div>
+        <div class="signal-body">At low body fat, the visual signal often leads the scale signal by 1–2 weeks. The final kilos of fat loss happen alongside subtle glycogen and water shifts that obscure scale changes but show clearly in the mirror — vascularity sharpening, separation deepening, skin pulling tighter.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- === SECTION 9 — ENDPOINT === -->
+<section id="endpoint">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-num">09 / Endpoint</div>
+      <h2>The target weight is a <em>stepping stone</em>.</h2>
+      <p class="lede">For hybrid athletes, the cut is usually in service of something downstream — calisthenics progression, cardio capacity, movement quality. Calibrate the endpoint to the goal, not to a number that came from a magazine.</p>
+    </div>
+
+    <div class="prose">
+      <p>The one-arm pull-up is a strength-to-bodyweight problem. The conventional benchmark is being able to do a weighted pull-up at roughly your own bodyweight added — pulling about 2× bodyweight total. Below 1.5× the body is too heavy a lever; above 2× the skill becomes the limiter, not the strength.</p>
+      <p>Use the calculator to see where your current ratio sits, and where progress in either direction (bodyweight down, weighted up) would take you.</p>
+    </div>
+
+    <div class="oap">
+      <div class="oap-inputs">
+        <div class="oap-input-group">
+          <label>Bodyweight</label>
+          <input type="number" class="oap-input mono" id="bw" value="85" min="40" max="200" step="0.5">
+        </div>
+        <div class="oap-input-group">
+          <label>Weighted pull-up (added)</label>
+          <input type="number" class="oap-input mono" id="wpu" value="50" min="0" max="150" step="2.5">
+        </div>
+      </div>
+
+      <div class="oap-stats">
+        <div class="oap-stat">
+          <div class="oap-stat-label">Total pulled</div>
+          <div class="oap-stat-value mono"><span id="totalPulled">135</span><span class="oap-stat-unit">kg</span></div>
+        </div>
+        <div class="oap-stat">
+          <div class="oap-stat-label">Ratio</div>
+          <div class="oap-stat-value accent mono"><span id="ratio">1.59</span><span class="oap-stat-unit">× BW</span></div>
+        </div>
+        <div class="oap-stat">
+          <div class="oap-stat-label">Band</div>
+          <div class="oap-stat-value mono" id="bandName" style="font-size: 1.25rem;">Intermediate</div>
+        </div>
+      </div>
+
+      <div class="oap-bands" id="oapBands">
+        <div class="oap-band" data-min="1" data-max="1.25">Foundation</div>
+        <div class="oap-band" data-min="1.25" data-max="1.5">Strength build</div>
+        <div class="oap-band" data-min="1.5" data-max="1.7">Intermediate</div>
+        <div class="oap-band" data-min="1.7" data-max="1.85">Skill territory</div>
+        <div class="oap-band" data-min="1.85" data-max="2.5">One-arm range</div>
+        <div class="oap-marker" id="oapMarker" style="left: 50%;"></div>
+      </div>
+
+      <div class="oap-band-scale">
+        <span>1.0×</span>
+        <span>1.25×</span>
+        <span>1.5×</span>
+        <span>1.7×</span>
+        <span>1.85×</span>
+        <span>2.0×</span>
+      </div>
+
+      <div class="oap-recommendation">
+        <div class="oap-rec-label">Next phase</div>
+        <div class="oap-rec-text" id="oapRec">You have the absolute strength to start unilateral skill work. Add archer pull-ups, typewriters, and one-arm negatives — your strength base supports the transition. Continue weighted pull-ups to build the ratio.</div>
+      </div>
+    </div>
+
+    <details>
+      <summary>Building the ratio: drop weight or add load?</summary>
+      <div class="details-body">
+        <p>Both work, but they're not interchangeable. Adding load to the weighted pull-up is harder and slower at low body fat — you're trying to build absolute pulling strength in a caloric deficit, which is a tough environment for strength gain. Dropping bodyweight is more reliable in the short term if your training stimulus is otherwise dialled in.</p>
+        <p>A typical path: cut to a sustainable lean weight that improves the ratio meaningfully (78–82kg for many 175–180cm males), then transition to maintenance and focus the next 3–6 months on absolute strength acquisition with unilateral skill work integrated.</p>
+        <p>Going lower than ~76kg for that height usually compromises the strength gain — the body fights aggressively, recovery degrades, and you can't build the absolute strength the OAP needs. Find the lightest weight where pulling strength still progresses, then stay there.</p>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- === FOOTER === -->
+<footer>
+  <div class="container">
+    <div class="footer-brand serif">compounding_gains</div>
+    <div class="footer-meta">FIELD MANUAL · v1.0 · 2026</div>
+    <div class="footer-disclaimer">
+      This is a personal field manual for trained athletes already managing their nutrition and recovery. It is not medical advice. Conditions affecting metabolism, kidney function, blood pressure, blood sugar, or eating patterns warrant clinical input before adjusting protocols. Train hard, sleep well, eat with intention.
+    </div>
+  </div>
+</footer>
+
+<script>
+// === THEME TOGGLE ===
+const themeToggle = document.getElementById('themeToggle');
+const root = document.documentElement;
+const savedTheme = localStorage.getItem('theme') || 'dark';
+root.setAttribute('data-theme', savedTheme);
+themeToggle.textContent = savedTheme === 'dark' ? 'Light' : 'Dark';
+
+themeToggle.addEventListener('click', () => {
+  const current = root.getAttribute('data-theme');
+  const next = current === 'dark' ? 'light' : 'dark';
+  root.setAttribute('data-theme', next);
+  themeToggle.textContent = next === 'dark' ? 'Light' : 'Dark';
+  localStorage.setItem('theme', next);
+});
+
+// === DAY BUILDER ===
+const trainSlider = document.getElementById('trainSlider');
+const trainTime = document.getElementById('trainTime');
+const timeline = document.getElementById('timeline');
+
+function formatTime(hours) {
+  const h = Math.floor(hours);
+  const m = Math.round((hours - h) * 60);
+  return `${String(h).padStart(2, '0')}:${String(m).padStart(2, '0')}`;
+}
+
+function timeToPercent(hours) {
+  return (hours / 24) * 100;
+}
+
+function renderTimeline(trainHour) {
+  const sleepEnd = 6.5;
+  const sleepStart = 22.5;
+  const preTraining = trainHour - 1.5;
+  const trainingEnd = trainHour + 1;
+  const cardioEnd = trainingEnd + 1;
+  const postWorkoutMeal = trainingEnd;
+  const dinner = Math.max(cardioEnd + 2, 18);
+  const cutoff = sleepStart - 5;
+
+  const blocks = [
+    { type: 'sleep', start: 0, end: sleepEnd, label: 'Sleep' },
+    { type: 'carbs', start: sleepEnd, end: preTraining, label: 'Hydration + breakfast' },
+    { type: 'carbs', start: preTraining, end: trainHour, label: 'Pre-training' },
+    { type: 'training', start: trainHour, end: trainingEnd, label: 'Train' },
+    { type: 'cardio', start: trainingEnd, end: cardioEnd, label: 'Cardio' },
+    { type: 'carbs', start: cardioEnd, end: cardioEnd + 0.5, label: 'Post-WO meal' },
+    { type: 'psmf', start: cardioEnd + 0.5, end: dinner, label: 'Light meal / fluids' },
+    { type: 'psmf', start: dinner, end: dinner + 1, label: 'PSMF dinner' },
+    { type: 'psmf', start: dinner + 1, end: sleepStart, label: 'Wind down' },
+    { type: 'sleep', start: sleepStart, end: 24, label: 'Sleep' },
+    { type: 'cutoff', start: cutoff, end: cutoff + 0.05, label: '' }
+  ];
+
+  timeline.innerHTML = '';
+  blocks.forEach(block => {
+    if (block.end <= block.start && block.type !== 'cutoff') return;
+    const el = document.createElement('div');
+    el.className = `timeline-block ${block.type}`;
+    el.style.left = `${timeToPercent(block.start)}%`;
+    el.style.width = `${timeToPercent(block.end - block.start)}%`;
+    if ((block.end - block.start) * 4 > 2.5 && block.label) {
+      el.textContent = block.label;
+    }
+    timeline.appendChild(el);
+  });
+}
+
+trainSlider.addEventListener('input', (e) => {
+  const h = parseInt(e.target.value);
+  trainTime.textContent = formatTime(h);
+  renderTimeline(h);
+});
+
+renderTimeline(14);
+
+// === PSMF VS HYBRID TOGGLE ===
+const compareButtons = document.querySelectorAll('.compare-btn');
+const compareContents = document.querySelectorAll('.compare-content');
+
+compareButtons.forEach(btn => {
+  btn.addEventListener('click', () => {
+    const target = btn.dataset.target;
+    compareButtons.forEach(b => b.classList.remove('active'));
+    compareContents.forEach(c => c.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById(`content-${target}`).classList.add('active');
+  });
+});
+
+// === OAP CALCULATOR ===
+const bwInput = document.getElementById('bw');
+const wpuInput = document.getElementById('wpu');
+const totalPulled = document.getElementById('totalPulled');
+const ratio = document.getElementById('ratio');
+const bandName = document.getElementById('bandName');
+const oapMarker = document.getElementById('oapMarker');
+const oapBands = document.querySelectorAll('.oap-band');
+const oapRec = document.getElementById('oapRec');
+
+const recommendations = {
+  'Foundation': 'Build the base. Master bodyweight pull-ups (3 sets of 8+ strict) and scapular control. Avoid jumping to one-arm work — your CNS, tendons, and connective tissue need the foundation phase to handle later loads safely.',
+  'Strength build': 'Add weighted pull-ups progressively. Aim for +25–40% of bodyweight as a working set. Include scapular pulls, hollow body holds, and grip work. Not yet ready for one-arm progressions — keep building absolute strength.',
+  'Intermediate': 'You have the absolute strength to start unilateral skill work. Add archer pull-ups, typewriters, and one-arm negatives — your strength base supports the transition. Continue weighted pull-ups to build the ratio.',
+  'Skill territory': 'You\'re in genuine OAP development range. Add one-arm negatives (slow eccentrics, 5–8 seconds), assisted one-arms with band or single-finger assistance, and uneven pull-ups. Tendon conditioning is now critical — respect elbow signals.',
+  'One-arm range': 'You have the strength-to-weight for a full one-arm pull-up. Final piece is skill consolidation and confidence. Practice singles regularly, build to clean reps without kipping. Grip and tendon quality determine ceiling here.'
+};
+
+function updateOAP() {
+  const bw = parseFloat(bwInput.value) || 0;
+  const wpu = parseFloat(wpuInput.value) || 0;
+  const total = bw + wpu;
+  const r = bw > 0 ? total / bw : 0;
+
+  totalPulled.textContent = total.toFixed(1);
+  ratio.textContent = r.toFixed(2);
+
+  let active = 'Foundation';
+  let rangeMin = 1, rangeMax = 2.5;
+
+  oapBands.forEach(band => {
+    const min = parseFloat(band.dataset.min);
+    const max = parseFloat(band.dataset.max);
+    if (r >= min && r < max) {
+      band.classList.add('active');
+      active = band.textContent;
+    } else if (r >= max && band === oapBands[oapBands.length - 1] && r >= 1.85) {
+      band.classList.add('active');
+      active = band.textContent;
+    } else {
+      band.classList.remove('active');
+    }
+  });
+
+  if (r >= 1.85) {
+    oapBands[oapBands.length - 1].classList.add('active');
+    active = 'One-arm range';
+  }
+  if (r < 1) {
+    oapBands[0].classList.add('active');
+    active = 'Foundation';
+  }
+
+  bandName.textContent = active;
+  oapRec.textContent = recommendations[active] || recommendations['Foundation'];
+
+  const clampedRatio = Math.max(1, Math.min(2.5, r));
+  const markerPct = ((clampedRatio - 1) / 1.5) * 100;
+  oapMarker.style.left = `${markerPct}%`;
+}
+
+bwInput.addEventListener('input', updateOAP);
+wpuInput.addEventListener('input', updateOAP);
+updateOAP();
+</script>
+</body>
+</html>

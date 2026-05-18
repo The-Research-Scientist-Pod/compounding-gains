@@ -1,0 +1,1727 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meals — Compounding Gains</title>
+<meta name="description" content="PSMF-aligned meal suggestions for trained athletes. Protein-anchored, vegetable-heavy, satiety-engineered.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..700,0..100;1,9..144,300..700,0..100&family=Geist:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0a0908;
+  --bg-elevated: #141210;
+  --bg-card: #1a1815;
+  --bg-card-hover: #201d19;
+  --border: #2a2622;
+  --border-strong: #3a342d;
+  --text: #f4f1ec;
+  --text-muted: #8a8478;
+  --text-faded: #5a5650;
+  --accent: #d4a256;
+  --accent-bright: #e8b86d;
+  --accent-dim: rgba(212, 162, 86, 0.12);
+  --accent-border: rgba(212, 162, 86, 0.3);
+  --danger: #c4604a;
+  --success: #7ba66f;
+  --success-dim: rgba(123, 166, 111, 0.12);
+  --info: #6c9bb8;
+  --info-dim: rgba(108, 155, 184, 0.12);
+}
+
+[data-theme="light"] {
+  --bg: #faf8f3;
+  --bg-elevated: #ffffff;
+  --bg-card: #ffffff;
+  --bg-card-hover: #f5f2eb;
+  --border: #e8e3d8;
+  --border-strong: #d0cabe;
+  --text: #1a1714;
+  --text-muted: #6a6258;
+  --text-faded: #9a9388;
+  --accent: #a87a31;
+  --accent-bright: #b8893d;
+  --accent-dim: rgba(168, 122, 49, 0.1);
+  --accent-border: rgba(168, 122, 49, 0.35);
+  --danger: #a04830;
+  --success: #4a7340;
+  --success-dim: rgba(74, 115, 64, 0.08);
+  --info: #4a7590;
+  --info-dim: rgba(74, 117, 144, 0.08);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Geist', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  overflow-x: hidden;
+}
+
+.mono { font-family: 'JetBrains Mono', ui-monospace, monospace; font-feature-settings: 'tnum' 1; }
+.serif { font-family: 'Fraunces', Georgia, serif; font-variation-settings: 'SOFT' 30, 'opsz' 96; }
+
+/* === NAVIGATION === */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(10, 9, 8, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+[data-theme="light"] nav { background: rgba(250, 248, 243, 0.85); }
+.nav-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+.brand {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+.brand-accent { color: var(--accent); font-weight: 500; }
+.nav-links { display: flex; gap: 1rem; align-items: center; }
+.nav-link {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.nav-link:hover { color: var(--accent); }
+.nav-link.active { color: var(--text); }
+.theme-toggle {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  padding: 0.5rem 0.8rem;
+  cursor: pointer;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  transition: all 0.2s ease;
+}
+.theme-toggle:hover { color: var(--accent); border-color: var(--accent-border); }
+
+/* === CONTAINER === */
+.container { max-width: 1280px; margin: 0 auto; padding: 0 2rem; }
+@media (max-width: 640px) { .container { padding: 0 1.25rem; } }
+
+/* === HERO === */
+.hero {
+  padding: 6rem 0 4rem;
+  border-bottom: 1px solid var(--border);
+}
+.hero-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.hero-label::before {
+  content: '';
+  width: 24px;
+  height: 1px;
+  background: var(--accent);
+}
+.hero h1 {
+  font-family: 'Fraunces', serif;
+  font-variation-settings: 'SOFT' 30, 'opsz' 144, 'wght' 400;
+  font-size: clamp(2.5rem, 5.5vw, 4.5rem);
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.5rem;
+  max-width: 900px;
+}
+.hero h1 em {
+  font-style: italic;
+  font-variation-settings: 'SOFT' 80, 'opsz' 144, 'wght' 300;
+  color: var(--accent);
+}
+.hero-sub {
+  font-size: 1.15rem;
+  line-height: 1.55;
+  color: var(--text-muted);
+  max-width: 640px;
+}
+
+/* === FILTERS === */
+.filters {
+  padding: 2.5rem 0;
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 65px;
+  z-index: 90;
+  background: var(--bg);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+.filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1.5rem 2rem;
+}
+.filter-group {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+.filter-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-faded);
+}
+.filter-pills { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.filter-pill {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-muted);
+  padding: 0.45rem 0.9rem;
+  cursor: pointer;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  transition: all 0.18s ease;
+  border-radius: 0;
+}
+.filter-pill:hover {
+  color: var(--text);
+  border-color: var(--border-strong);
+}
+.filter-pill.active {
+  background: var(--accent-dim);
+  border-color: var(--accent-border);
+  color: var(--accent);
+}
+
+.result-count {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--text-faded);
+  margin-left: auto;
+  letter-spacing: 0.05em;
+}
+
+/* === MEALS GRID === */
+.meals-section { padding: 3rem 0 6rem; }
+
+.meals-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 1.5rem;
+}
+
+.meal-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  padding: 1.75rem;
+  transition: all 0.25s ease;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.meal-card:hover {
+  background: var(--bg-card-hover);
+  border-color: var(--border-strong);
+}
+
+.meal-card.hidden { display: none; }
+
+.meal-card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-bottom: 1rem;
+}
+
+.tag {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.25rem 0.55rem;
+  border: 1px solid;
+  background: transparent;
+}
+
+.tag.slot {
+  border-color: var(--accent-border);
+  color: var(--accent);
+  background: var(--accent-dim);
+}
+.tag.psmf {
+  border-color: rgba(140, 140, 140, 0.4);
+  color: var(--text-muted);
+}
+.tag.training-day {
+  border-color: rgba(123, 166, 111, 0.4);
+  color: var(--success);
+  background: var(--success-dim);
+}
+.tag.fast {
+  border-color: rgba(108, 155, 184, 0.4);
+  color: var(--info);
+  background: var(--info-dim);
+}
+
+.meal-card-title {
+  font-family: 'Fraunces', serif;
+  font-variation-settings: 'opsz' 48, 'wght' 400;
+  font-size: 1.55rem;
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+  margin-bottom: 0.6rem;
+}
+
+.meal-card-desc {
+  color: var(--text-muted);
+  font-size: 0.92rem;
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+}
+
+.meal-macros {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.5rem;
+  padding: 1rem 0;
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 1.25rem;
+}
+
+.macro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.macro-value {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: var(--text);
+}
+
+.macro-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-faded);
+}
+
+.macro.kcal .macro-value { color: var(--accent); }
+.macro.protein .macro-value { color: var(--info); }
+.macro.carbs .macro-value { color: var(--accent); opacity: 0.85; }
+
+.meal-expand {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  padding: 0.5rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  transition: color 0.2s;
+  margin-top: auto;
+}
+
+.meal-expand:hover { color: var(--accent); }
+
+.meal-expand::after {
+  content: '+';
+  font-family: 'Fraunces', serif;
+  font-size: 1.3rem;
+  color: var(--accent);
+  font-weight: 300;
+  transition: transform 0.3s;
+}
+
+.meal-card.expanded .meal-expand::after { transform: rotate(45deg); }
+
+.meal-detail {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, padding 0.3s ease, margin 0.3s ease;
+  border-top: 0px solid var(--border);
+}
+
+.meal-card.expanded .meal-detail {
+  max-height: 1200px;
+  margin-top: 1rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+}
+
+.meal-detail h4 {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.75rem;
+  margin-top: 1.25rem;
+}
+
+.meal-detail h4:first-child { margin-top: 0; }
+
+.meal-detail ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.meal-detail li {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  padding: 0.35rem 0;
+  padding-left: 1.25rem;
+  position: relative;
+  line-height: 1.5;
+}
+
+.meal-detail li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.85rem;
+  width: 8px;
+  height: 1px;
+  background: var(--accent);
+}
+
+.meal-detail p {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin-bottom: 0.5rem;
+}
+
+.meal-detail p:last-child { margin-bottom: 0; }
+
+/* === NOTE PANEL === */
+.note-panel {
+  background: var(--accent-dim);
+  border: 1px solid var(--accent-border);
+  border-left-width: 2px;
+  padding: 1.5rem 1.75rem;
+  margin: 4rem 0 2rem;
+}
+
+.note-panel-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.75rem;
+}
+
+.note-panel-text {
+  color: var(--text);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* === EMPTY STATE === */
+.empty {
+  text-align: center;
+  padding: 4rem 2rem;
+  color: var(--text-muted);
+  display: none;
+}
+
+.empty.show { display: block; }
+
+.empty-title {
+  font-family: 'Fraunces', serif;
+  font-variation-settings: 'opsz' 48;
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: var(--text);
+}
+
+/* === FOOTER === */
+footer {
+  padding: 4rem 0;
+  text-align: center;
+  border-top: 1px solid var(--border);
+}
+.footer-brand {
+  font-family: 'Fraunces', serif;
+  font-variation-settings: 'opsz' 96, 'wght' 400;
+  font-style: italic;
+  font-size: 1.5rem;
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+}
+.footer-meta {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  color: var(--text-faded);
+  letter-spacing: 0.05em;
+}
+
+/* === MOBILE === */
+@media (max-width: 768px) {
+  .filters { top: 60px; padding: 1.5rem 0; }
+  .filter-row { gap: 1rem; }
+  .result-count { margin-left: 0; width: 100%; }
+}
+
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="brand">compounding<span class="brand-accent">_gains</span> // meals</div>
+    <div class="nav-links">
+      <a href="index.html" class="nav-link">Protocol</a>
+      <a href="meals.html" class="nav-link active">Meals</a>
+      <button class="theme-toggle" id="themeToggle">Light</button>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="container">
+    <div class="hero-label">A working list of meals</div>
+    <h1>Eat with <em>intention</em>.</h1>
+    <p class="hero-sub">Protein-anchored, vegetable-heavy, satiety-engineered. Built for trained athletes managing a deficit without breaking training or sleep. Filter by slot, by day type, by how much prep you've got time for.</p>
+  </div>
+</header>
+
+<section class="filters">
+  <div class="container">
+    <div class="filter-row">
+      <div class="filter-group">
+        <span class="filter-label">Slot</span>
+        <div class="filter-pills" data-filter="slot">
+          <button class="filter-pill active" data-value="all">All</button>
+          <button class="filter-pill" data-value="breakfast">Breakfast</button>
+          <button class="filter-pill" data-value="mid-morning">Mid-morning</button>
+          <button class="filter-pill" data-value="lunch">Lunch</button>
+          <button class="filter-pill" data-value="afternoon">Afternoon</button>
+          <button class="filter-pill" data-value="dinner">Dinner</button>
+        </div>
+      </div>
+      <div class="filter-group">
+        <span class="filter-label">Day</span>
+        <div class="filter-pills" data-filter="day">
+          <button class="filter-pill active" data-value="all">All</button>
+          <button class="filter-pill" data-value="training">Training</button>
+          <button class="filter-pill" data-value="psmf">PSMF rest</button>
+        </div>
+      </div>
+      <div class="filter-group">
+        <span class="filter-label">Prep</span>
+        <div class="filter-pills" data-filter="prep">
+          <button class="filter-pill active" data-value="all">All</button>
+          <button class="filter-pill" data-value="fast">Under 10 min</button>
+        </div>
+      </div>
+      <div class="filter-group">
+        <span class="filter-label">Carbs</span>
+        <div class="filter-pills" data-filter="carbs">
+          <button class="filter-pill active" data-value="all">All</button>
+          <button class="filter-pill" data-value="ultra-low">0–10g</button>
+        </div>
+      </div>
+      <span class="result-count mono" id="resultCount">— meals</span>
+    </div>
+  </div>
+</section>
+
+<section class="meals-section">
+  <div class="container">
+
+    <div class="meals-grid" id="mealsGrid">
+
+      <!-- === BREAKFAST === -->
+      <div class="meal-card" data-slot="breakfast" data-day="training,psmf" data-prep="fast" data-carbs="ultra-low">
+        <div class="meal-card-tags">
+          <span class="tag slot">Breakfast</span>
+          <span class="tag psmf">PSMF</span>
+          <span class="tag training-day">Training</span>
+          <span class="tag fast">Under 10 min</span>
+        </div>
+        <div class="meal-card-title">Egg & cottage cheese scramble</div>
+        <div class="meal-card-desc">Two whole eggs scrambled gently with 0% cottage cheese mixed in, finished with chives. Sautéed spinach and cherry tomatoes on the side.</div>
+        <div class="meal-macros">
+          <div class="macro kcal"><span class="macro-value">340</span><span class="macro-label">kcal</span></div>
+          <div class="macro protein"><span class="macro-value">48g</span><span class="macro-label">protein</span></div>
+          <div class="macro carbs"><span class="macro-value">8g</span><span class="macro-label">carbs</span></div>
+          <div class="macro"><span class="macro-value">11g</span><span class="macro-label">fat</span></div>
+        </div>
+        <button class="meal-expand">View recipe</button>
+        <div class="meal-detail">
+          <h4>Ingredients</h4>
+          <ul>
+            <li>2 whole eggs</li>
+            <li>200g 0% fat cottage cheese</li>
+            <li>100g spinach</li>
+            <li>1 garlic clove, minced</li>
+            <li>Handful cherry tomatoes</li>
+            <li>Fresh chives, salt, black pepper</li>
+          </ul>
+          <h4>Method</h4>
+          <p>Whisk eggs with salt and pepper. Heat pan on low-medium. Pour eggs in, stir gently with spatula. When eggs are 70% set, fold in cottage cheese. Remove from heat while still creamy. Sauté spinach in same pan with garlic for 60 seconds. Plate with tomatoes and chives.</p>
+          <h4>Why it works</h4>
+          <p>Two-phase amino acid profile from fast-digesting egg protein and slow casein. Yolks deliver the day's choline, fat-soluble vitamins, and the small amount of dietary fat needed for hormonal support without pushing the meal into high-fat territory.</p>
+        </div>
+      </div>
+
+      <div class="meal-card" data-slot="breakfast" data-day="training,psmf" data-prep="fast">
+        <div class="meal-card-tags">
+          <span class="tag slot">Breakfast</span>
+          <span class="tag psmf">PSMF</span>
+          <span class="tag fast">Under 10 min</span>
+        </div>
+        <div class="meal-card-title">Greek yoghurt protein bowl</div>
+        <div class="meal-card-desc">Skyr or Greek 0%, scoop of whey, frozen berries, cinnamon, optional crushed walnuts on training days only.</div>
+        <div class="meal-macros">
+          <div class="macro kcal"><span class="macro-value">310</span><span class="macro-label">kcal</span></div>
+          <div class="macro protein"><span class="macro-value">50g</span><span class="macro-label">protein</span></div>
+          <div class="macro carbs"><span class="macro-value">15g</span><span class="macro-label">carbs</span></div>
+          <div class="macro"><span class="macro-value">2g</span><span class="macro-label">fat</span></div>
+        </div>
+        <button class="meal-expand">View recipe</button>
+        <div class="meal-detail">
+          <h4>Ingredients</h4>
+          <ul>
+            <li>250g 0% Greek yoghurt or skyr</li>
+            <li>1 scoop whey protein isolate (25–30g)</li>
+            <li>80g frozen mixed berries</li>
+            <li>1 tsp cinnamon</li>
+            <li>Vanilla extract (optional)</li>
+          </ul>
+          <h4>Method</h4>
+          <p>Mix yoghurt and whey thoroughly with a fork until smooth. Add berries straight from frozen — they thaw and release juice into the yoghurt for a swirl effect. Dust with cinnamon. Eat slowly.</p>
+          <h4>Why it works</h4>
+          <p>Dessert-coded but functionally a casein-heavy protein anchor. Berries provide antioxidants and the slow-release sugars are minimal enough to keep insulin response controlled. Cinnamon supports glucose handling.</p>
+        </div>
+      </div>
+
+      <div class="meal-card" data-slot="breakfast" data-day="training" data-prep="">
+        <div class="meal-card-tags">
+          <span class="tag slot">Breakfast</span>
+          <span class="tag training-day">Training</span>
+        </div>
+        <div class="meal-card-title">Oats, whey, berries, electrolytes</div>
+        <div class="meal-card-desc">Pre-training carb anchor with sustained protein. Best 90 minutes before resistance work.</div>
+        <div class="meal-macros">
+          <div class="macro kcal"><span class="macro-value">420</span><span class="macro-label">kcal</span></div>
+          <div class="macro protein"><span class="macro-value">38g</span><span class="macro-label">protein</span></div>
+          <div class="macro carbs"><span class="macro-value">55g</span><span class="macro-label">carbs</span></div>
+          <div class="macro"><span class="macro-value">6g</span><span class="macro-label">fat</span></div>
+        </div>
+        <button class="meal-expand">View recipe</button>
+        <div class="meal-detail">
+          <h4>Ingredients</h4>
+          <ul>
+            <li>60g rolled oats</li>
+            <li>1 scoop whey protein isolate</li>
+            <li>100g 0% Greek yoghurt</li>
+            <li>80g mixed berries</li>
+            <li>Cinnamon, pinch of salt</li>
+            <li>Electrolyte serving (separate)</li>
+          </ul>
+          <h4>Method</h4>
+          <p>Cook oats with water and a pinch of salt. Once cooked, fold in whey (mix vigorously to avoid clumping) and yoghurt. Top with berries and cinnamon. Drink electrolytes alongside.</p>
+          <h4>Why it works</h4>
+          <p>Oats provide sustained-release carbs that prime glycogen for training without spiking insulin too sharply. Whey delivers fast amino acids; yoghurt extends the protein release. This is the training-day anchor — not a PSMF meal.</p>
+        </div>
+      </div>
+
+      <!-- === MID-MORNING === -->
+      <div class="meal-card" data-slot="mid-morning" data-day="psmf,training" data-prep="fast" data-carbs="ultra-low">
+        <div class="meal-card-tags">
+          <span class="tag slot">Mid-morning</span>
+          <span class="tag psmf">PSMF</span>
+          <span class="tag fast">Under 10 min</span>
+        </div>
+        <div class="meal-card-title">Tuna & ferment bowl</div>
+        <div class="meal-card-desc">Canned tuna with Greek yoghurt as the binder, large bed of leaves, kimchi and pickles for the salt-sour-umami hit.</div>
+        <div class="meal-macros">
+          <div class="macro kcal"><span class="macro-value">240</span><span class="macro-label">kcal</span></div>
+          <div class="macro protein"><span class="macro-value">48g</span><span class="macro-label">protein</span></div>
+          <div class="macro carbs"><span class="macro-value">6g</span><span class="macro-label">carbs</span></div>
+          <div class="macro"><span class="macro-value">2g</span><span class="macro-label">fat</span></div>
+        </div>
+        <button class="meal-expand">View recipe</button>
+        <div class="meal-detail">
+          <h4>Ingredients</h4>
+          <ul>
+            <li>120g drained canned tuna in spring water</li>
+            <li>100g 0% Greek yoghurt</li>
+            <li>150g mixed leaves (rocket, spinach, watercress)</li>
+            <li>50g kimchi</li>
+            <li>50g pickles</li>
+            <li>Cucumber, peppers</li>
+            <li>1 tbsp capers, lemon, dill</li>
+          </ul>
+          <h4>Method</h4>
+          <p>Mix tuna with yoghurt, capers, lemon juice, dill, and black pepper. Pile onto a bed of leaves with sliced cucumber and peppers. Add kimchi and pickles on the side.</p>
+          <h4>Why it works</h4>
+          <p>Greek yoghurt replaces mayonnaise — same texture function, fraction of the calories, meaningful added protein. Fermented sides (kimchi, capers, pickles) deliver the salt-sour-umami satisfaction that PSMF meals often lack, plus genuine microbiome support.</p>
+        </div>
+      </div>
+
+      <div class="meal-card" data-slot="mid-morning" data-day="psmf,training" data-prep="fast" data-carbs="ultra-low">
+        <div class="meal-card-tags">
+          <span class="tag slot">Mid-morning</span>
+          <span class="tag psmf">PSMF</span>
+          <span class="tag fast">Under 10 min</span>
+        </div>
+        <div class="meal-card-title">Cottage cheese with cucumber & dill</div>
+        <div class="meal-card-desc">Savoury cottage cheese with chopped cucumber, dill, pickles, black pepper, and a squeeze of lemon. No-cook, very fast.</div>
+        <div class="meal-macros">
+          <div class="macro kcal"><span class="macro-value">220</span><span class="macro-label">kcal</span></div>
+          <div class="macro protein"><span class="macro-value">42g</span><span class="macro-label">protein</span></div>
+          <div class="macro carbs"><span class="macro-value">8g</span><span class="macro-label">carbs</span></div>
+          <div class="macro"><span class="macro-value">1g</span><span class="macro-label">fat</span></div>
+        </div>
+        <button class="meal-expand">View recipe</button>
+        <div class="meal-detail">
+          <h4>Ingredients</h4>
+          <ul>
+            <li>300g 0% cottage cheese</li>
+            <li>1/2 cucumber, diced</li>
+            <li>Fresh dill, generous handful</li>
+            <li>Pickles, sliced (50g)</li>
+            <li>Black pepper, lemon juice</li>
+            <li>Optional: capers, sliced radish</li>
+          </ul>
+          <h4>Method</h4>
+          <p>Spoon cottage cheese into a bowl. Top with diced cucumber, dill, pickles, and a generous grind of black pepper. Squeeze over lemon juice. Stir loosely or eat as a layered bowl.</p>
+          <h4>Why it works</h4>
+          <p>Savoury cottage cheese is underrated — it's typically eaten sweet, which limits its use as a real meal. With ferments and herbs it becomes a substantial PSMF anchor that takes 90 seconds to assemble. Casein keeps satiety high for 3+ hours.</p>
+        </div>
+      </div>
+
+      <!-- === LUNCH === -->
+      <div class="meal-card" data-slot="lunch" data-day="psmf,training" data-prep="" data-carbs="ultra-low">
+        <div class="meal-card-tags">
+          <span class="tag slot">Lunch</span>
+          <span class="tag psmf">PSMF</span>
+          <span class="tag training-day">Training</span>
+        </div>
+        <div class="meal-card-title">Chicken with broccoli & kimchi</div>
+        <div class="meal-card-desc">Pan-grilled chicken breast, garlic broccoli or tenderstem, kimchi, sliced radishes. The PSMF workhorse.</div>
+        <div class="meal-macros">
+          <div class="macro kcal"><span class="macro-value">270</span><span class="macro-label">kcal</span></div>
+          <div class="macro protein"><span class="macro-value">48g</span><span class="macro-label">protein</span></div>
+          <div class="macro carbs"><span class="macro-value">10g</span><span class="macro-label">carbs</span></div>
+          <div class="macro"><span class="macro-value">3g</span><span class="macro-label">fat</span></div>
+        </div>
+        <button class="meal-expand">View recipe</button>
+        <div class="meal-detail">
+          <h4>Ingredients</h4>
+          <ul>
+            <li>180g chicken breast</li>
+            <li>200g broccoli or tenderstem</li>
+            <li>2 garlic cloves</li>
+            <li>100g kimchi</li>
+            <li>50g sliced radishes</li>
+            <li>Paprika, salt, lemon</li>
+          </ul>
+          <h4>Method</h4>
+          <p>Season chicken with paprika and salt. Pan-grill 4–5 minutes each side until cooked through. Rest. Meanwhile, steam broccoli 4 minutes, then finish in the hot pan with sliced garlic for 60 seconds. Plate with kimchi and radishes, lemon wedge.</p>
+          <h4>Why it works</h4>
+          <p>Brassicas are PSMF royalty — high volume, low calorie, sulforaphane and DIM precursors, hold texture well. Chicken breast delivers 48g of protein for under 300 kcal. Kimchi provides the satiety hit and microbiome support.</p>
+        </div>
+      </div>
+
+      <div class="meal-card" data-slot="lunch" data-day="psmf,training" data-prep="">
+        <div class="meal-card-tags">
+          <span class="tag slot">Lunch</span>
+          <span class="tag psmf">PSMF</span>
+          <span class="tag training-day">Training</span>
+        </div>
+        <div class="meal-card-title">Turkey, asparagus & mixed veg</div>
+        <div class="meal-card-desc">Lean turkey breast with steamed asparagus and a side of canned mixed vegetables warmed with herbs.</div>
+        <div class="meal-macros">
+          <div class="macro kcal"><span class="macro-value">280</span><span class="macro-label">kcal</span></div>
+          <div class="macro protein"><span class="macro-value">46g</span><span class="macro-label">protein</span></div>
+          <div class="macro carbs"><span class="macro-value">14g</span><span class="macro-label">carbs</span></div>
+          <div class="macro"><span class="macro-value">3g</span><span class="macro-label">fat</span></div>
+        </div>
+        <button class="meal-expand">View recipe</button>
+        <div class="meal-detail">
+          <h4>Ingredients</h4>
+          <ul>
+            <li>180g turkey breast</li>
+            <li>200g asparagus</li>
+            <li>1/2 can mixed vegetables (drained)</li>
+            <li>Garlic, lemon, thyme</li>
+            <li>Salt, black pepper</li>
+          </ul>
+          <h4>Method</h4>
+          <p>Pan-grill turkey with thyme, salt, and pepper, 4 minutes each side. Steam asparagus 4–5 minutes. Warm canned veg in pan with garlic for 90 seconds. Plate, finish with lemon.</p>
+          <h4>Why it works</h4>
+          <p>Canned mixed veg is a useful pantry staple — calorie-neutral filler that adds volume, fibre, and micronutrients when fresh vegetables aren't practical. Turkey is leaner than chicken thigh and similar to chicken breast for the protein anchor.</p>
+        </div>
+      </div>
+
+      <div class="meal-card" data-slot="lunch" data-day="psmf,training" data-prep="fast" data-carbs="ultra-low">
+        <div class="meal-card-tags">
+          <span class="tag slot">Lunch</span>
+          <span class="tag psmf">PSMF</span>
+          <span class="tag fast">Under 10 min</span>
+        </div>
+        <div class="meal-card-title">Smoked mackerel salad</div>
+        <div class="meal-card-desc">Smoked mackerel fillets with peppery leaves, capers, red onion, lemon. Higher fat, omega-3 anchor.</div>
+        <div class="meal-macros">
+          <div class="macro kcal"><span class="macro-value">340</span><span class="macro-label">kcal</span></div>
+          <div class="macro protein"><span class="macro-value">38g</span><span class="macro-label">protein</span></div>
+          <div class="macro carbs"><span class="macro-value">6g</span><span class="macro-label">carbs</span></div>
+          <div class="macro"><span class="macro-value">19g</span><span class="macro-label">fat</span></div>
+        </div>
+        <button class="meal-expand">View recipe</button>
+        <div class="meal-detail">
+          <h4>Ingredients</h4>
+          <ul>
+            <li>150g smoked mackerel fillet</li>
+            <li>150g rocket and watercress</li>
+            <li>Thinly sliced red onion</li>
+            <li>1 tbsp capers</li>
+            <li>Lemon, cracked pepper</li>
+            <li>Sliced cucumber, radish</li>
+          </ul>
+          <h4>Method</h4>
+          <p>Pile leaves onto plate. Flake mackerel over the top. Scatter onion, capers, cucumber, radish. Finish with lemon juice and cracked pepper. No oil — the mackerel provides all the fat needed.</p>
+          <h4>Why it works</h4>
+          <p>Fat is higher than typical PSMF meals, so this slots into days where the fat budget allows (training days) or replaces the breakfast egg meal. Omega-3 content (~2.5g EPA/DHA per serving) is genuinely useful for the cut — anti-inflammatory, hormonal support, recovery.</p>
+        </div>
+      </div>
+
+      <!-- === AFTERNOON === -->
+      <div class="meal-card" data-slot="afternoon" data-day="training" data-prep="fast">
+        <div class="meal-card-tags">
+          <span class="tag slot">Afternoon</span>
+          <span class="tag training-day">Training</span>
+          <span class="tag fast">Under 10 min</span>
+        </div>
+        <div class="meal-card-title">Post-training: cottage cheese, vegan protein, banana</div>
+        <div class="meal-card-desc">Two-phase protein, fast carbs, electrolytes. Immediately after lifting or before cardio.</div>
+        <div class="meal-macros">
+          <div class="macro kcal"><span class="macro-value">340</span><span class="macro-label">kcal</span></div>
+          <div class="macro protein"><span class="macro-value">52g</span><span class="macro-label">protein</span></div>
+          <div class="macro carbs"><span class="macro-value">30g</span><span class="macro-label">carbs</span></div>
+          <div class="macro"><span class="macro-value">2g</span><span class="macro-label">fat</span></div>
+        </div>
+        <button class="meal-expand">View recipe</button>
+        <div class="meal-detail">
+          <h4>Ingredients</h4>
+          <ul>
+            <li>300g 0% cottage cheese</li>
+            <li>1 scoop vegan protein blend</li>
+            <li>1 medium banana</li>
+            <li>Cinnamon</li>
+          </ul>
+          <h4>Method</h4>
+          <p>Spoon cottage cheese into bowl. Sprinkle vegan protein over (mix briefly or eat layered). Top with sliced banana and cinnamon. Drink water with electrolytes alongside.</p>
+          <h4>Why it works</h4>
+          <p>Casein (cottage cheese) + plant protein blend = two-phase amino release. Banana provides fast carbs for glycogen restoration during the high-insulin-sensitivity post-training window. This is the gap-closer between resistance work and continued cardio — fueling the next 60 minutes of incline walking without hypoglycaemia risk.</p>
+        </div>
+      </div>
+
+      <div class="meal-card" data-slot="afternoon" data-day="psmf,training" data-prep="fast">
+        <div class="meal-card-tags">
+          <span class="tag slot">Afternoon</span>
+          <span class="tag psmf">PSMF</span>
+          <span class="tag fast">Under 10 min</span>
+        </div>
+        <div class="meal-card-title">Cottage cheese, whey & berries</div>
+        <div class="meal-card-desc">Dessert-coded but functionally a protein anchor. The "treat" meal of a PSMF day.</div>
+        <div class="meal-macros">
+          <div class="macro kcal"><span class="macro-value">270</span><span class="macro-label">kcal</span></div>
+          <div class="macro protein"><span class="macro-value">50g</span><span class="macro-label">protein</span></div>
+          <div class="macro carbs"><span class="macro-value">12g</span><span class="macro-label">carbs</span></div>
+          <div class="macro"><span class="macro-value">1g</span><span class="macro-label">fat</span></div>
+        </div>
+        <button class="meal-expand">View recipe</button>
+        <div class="meal-detail">
+          <h4>Ingredients</h4>
+          <ul>
+            <li>250g 0% cottage cheese</li>
+            <li>1 scoop whey protein isolate</li>
+            <li>80g frozen raspberries or blueberries</li>
+            <li>Vanilla extract, cinnamon</li>
+          </ul>
+          <h4>Method</h4>
+          <p>Stir whey into cottage cheese with vanilla until smooth. Top with frozen berries (they thaw and bleed colour into the cheese for a marbled effect). Dust with cinnamon.</p>
+          <h4>Why it works</h4>
+          <p>Vital for psychological adherence on PSMF days that are otherwise savoury. Sweetness comes from berries and vanilla — no added sugar. Frozen berries give better texture variation than fresh.</p>
+        </div>
+      </div>
+
+      <div class="meal-card" data-slot="afternoon" data-day="psmf,training" data-prep="fast" data-carbs="ultra-low">
+        <div class="meal-card-tags">
+          <span class="tag slot">Afternoon</span>
+          <span class="tag psmf">PSMF</span>
+          <span class="tag fast">Under 10 min</span>
+        </div>
+        <div class="meal-card-title">Biltong & pickles</div>
+        <div class="meal-card-desc">Travel-friendly, no-prep protein anchor. Air-dried beef, pickles, sometimes a cheese string.</div>
+        <div class="meal-macros">
+          <div class="macro kcal"><span class="macro-value">230</span><span class="macro-label">kcal</span></div>
+          <div class="macro protein"><span class="macro-value">42g</span><span class="macro-label">protein</span></div>
+          <div class="macro carbs"><span class="macro-value">3g</span><span class="macro-label">carbs</span></div>
+          <div class="macro"><span class="macro-value">5g</span><span class="macro-label">fat</span></div>
+        </div>
+        <button class="meal-expand">View recipe</button>
+        <div class="meal-detail">
+          <h4>Ingredients</h4>
+          <ul>
+            <li>80g biltong</li>
+            <li>Pickled cucumbers or gherkins</li>
+            <li>Optional: 1 cheese string or 30g feta</li>
+            <li>Optional: cherry tomatoes</li>
+          </ul>
+          <h4>Method</h4>
+          <p>No prep. Eat biltong alongside pickles. Add cheese or tomatoes if available.</p>
+          <h4>Why it works</h4>
+          <p>For days when prep isn't possible — travel, busy work blocks, gym days with long sessions. Biltong is one of the highest protein-to-calorie ratios of any whole food. Pickles add volume and the salt-sour hit.</p>
+        </div>
+      </div>
+
+      <!-- === DINNER === -->
+      <div class="meal-card" data-slot="dinner" data-day="psmf,training" data-prep="">
+        <div class="meal-card-tags">
+          <span class="tag slot">Dinner</span>
+          <span class="tag psmf">PSMF</span>
+          <span class="tag training-day">Training</span>
+        </div>
+        <div class="meal-card-title">White fish with sweet potato & greens</div>
+        <div class="meal-card-desc">Cod or haddock baked with herbs, roasted sweet potato (the one carb meal of a PSMF day), asparagus, large salad.</div>
+        <div class="meal-macros">
+          <div class="macro kcal"><span class="macro-value">330</span><span class="macro-label">kcal</span></div>
+          <div class="macro protein"><span class="macro-value">46g</span><span class="macro-label">protein</span></div>
+          <div class="macro carbs"><span class="macro-value">25g</span><span class="macro-label">carbs</span></div>
+          <div class="macro"><span class="macro-value">1g</span><span class="macro-label">fat</span></div>
+        </div>
+        <button class="meal-expand">View recipe</button>
+        <div class="meal-detail">
+          <h4>Ingredients</h4>
+          <ul>
+            <li>180g cod or haddock fillet</li>
+            <li>100g sweet potato</li>
+            <li>200g asparagus</li>
+            <li>Mixed lettuce salad (different types)</li>
+            <li>Lemon, herbs, paprika</li>
+            <li>Vinegar-based dressing (no oil)</li>
+          </ul>
+          <h4>Method</h4>
+          <p>Cube sweet potato, toss with paprika and salt, roast 25 min at 200°C. Last 10 minutes, add fish in foil with lemon and herbs to the oven. Steam asparagus in last 4 minutes. Plate with large salad and vinegar dressing.</p>
+          <h4>Why it works</h4>
+          <p>Sweet potato is the one meaningful carb intake on a PSMF day — supports tryptophan transport for sleep, primes glycogen for next morning, prevents the sleep-disrupting effects of fully zero-carb days. White fish is the lowest-fat protein source available, easy to digest before bed.</p>
+        </div>
+      </div>
+
+      <div class="meal-card" data-slot="dinner" data-day="training" data-prep="">
+        <div class="meal-card-tags">
+          <span class="tag slot">Dinner</span>
+          <span class="tag training-day">Training</span>
+        </div>
+        <div class="meal-card-title">Salmon with mixed veg & rice</div>
+        <div class="meal-card-desc">Higher-calorie training-day dinner. Salmon for omega-3, basmati rice for glycogen restoration, brassicas and salad for volume.</div>
+        <div class="meal-macros">
+          <div class="macro kcal"><span class="macro-value">520</span><span class="macro-label">kcal</span></div>
+          <div class="macro protein"><span class="macro-value">42g</span><span class="macro-label">protein</span></div>
+          <div class="macro carbs"><span class="macro-value">45g</span><span class="macro-label">carbs</span></div>
+          <div class="macro"><span class="macro-value">18g</span><span class="macro-label">fat</span></div>
+        </div>
+        <button class="meal-expand">View recipe</button>
+        <div class="meal-detail">
+          <h4>Ingredients</h4>
+          <ul>
+            <li>150g salmon fillet</li>
+            <li>60g basmati rice (dry weight)</li>
+            <li>200g broccoli or mixed brassicas</li>
+            <li>Mixed lettuce salad</li>
+            <li>Lemon, ginger, garlic</li>
+            <li>Light soy or fish sauce</li>
+          </ul>
+          <h4>Method</h4>
+          <p>Cook rice. Pan-sear salmon skin-side down 4 min, flip 2 min. Steam broccoli. Finish salmon with ginger, garlic, lemon. Plate with rice, broccoli, salad with vinegar dressing.</p>
+          <h4>Why it works</h4>
+          <p>Training day evening meal — supports recovery and refills glycogen meaningfully. Salmon's fat content is higher but it's almost entirely omega-3 and monounsaturated, which is structurally different from saturated fat for cardiovascular and inflammatory markers.</p>
+        </div>
+      </div>
+
+      <div class="meal-card" data-slot="dinner" data-day="psmf,training" data-prep="fast" data-carbs="ultra-low">
+        <div class="meal-card-tags">
+          <span class="tag slot">Dinner</span>
+          <span class="tag psmf">PSMF</span>
+          <span class="tag fast">Under 10 min</span>
+        </div>
+        <div class="meal-card-title">Tuna salad with pickles & kimchi</div>
+        <div class="meal-card-desc">Quick PSMF dinner when prep time is zero. Tuna, large salad, fermented sides, lemon.</div>
+        <div class="meal-macros">
+          <div class="macro kcal"><span class="macro-value">250</span><span class="macro-label">kcal</span></div>
+          <div class="macro protein"><span class="macro-value">45g</span><span class="macro-label">protein</span></div>
+          <div class="macro carbs"><span class="macro-value">10g</span><span class="macro-label">carbs</span></div>
+          <div class="macro"><span class="macro-value">2g</span><span class="macro-label">fat</span></div>
+        </div>
+        <button class="meal-expand">View recipe</button>
+        <div class="meal-detail">
+          <h4>Ingredients</h4>
+          <ul>
+            <li>2 cans tuna in spring water (drained)</li>
+            <li>Mixed lettuce (different types)</li>
+            <li>Cucumber, peppers, tomatoes</li>
+            <li>100g kimchi</li>
+            <li>50g pickles</li>
+            <li>Lemon, dill, black pepper</li>
+          </ul>
+          <h4>Method</h4>
+          <p>Drain tuna and flake over a large bed of mixed leaves and chopped vegetables. Top with kimchi and pickles. Finish with lemon juice, dill, and black pepper. Mix briefly.</p>
+          <h4>Why it works</h4>
+          <p>The PSMF default when energy is low and prep can't happen. Two cans of tuna is genuinely a lot of protein — 45g for under 250 kcal. Fermented foods carry the satiety burden. No oil dressing keeps the fat budget intact.</p>
+        </div>
+      </div>
+
+      <div class="meal-card" data-slot="dinner" data-day="psmf" data-prep="">
+        <div class="meal-card-tags">
+          <span class="tag slot">Dinner</span>
+          <span class="tag psmf">PSMF</span>
+        </div>
+        <div class="meal-card-title">Daal with vegetable curry side</div>
+        <div class="meal-card-desc">Lentil daal for plant protein and slow carbs, served with a dry vegetable curry. Vegetarian PSMF option.</div>
+        <div class="meal-macros">
+          <div class="macro kcal"><span class="macro-value">380</span><span class="macro-label">kcal</span></div>
+          <div class="macro protein"><span class="macro-value">28g</span><span class="macro-label">protein</span></div>
+          <div class="macro carbs"><span class="macro-value">55g</span><span class="macro-label">carbs</span></div>
+          <div class="macro"><span class="macro-value">5g</span><span class="macro-label">fat</span></div>
+        </div>
+        <button class="meal-expand">View recipe</button>
+        <div class="meal-detail">
+          <h4>Ingredients</h4>
+          <ul>
+            <li>80g dry red lentils</li>
+            <li>1 tsp ghee or 1 tbsp coconut milk</li>
+            <li>Onion, garlic, ginger</li>
+            <li>Cumin, turmeric, garam masala, chilli</li>
+            <li>Mixed vegetables (cauliflower, peas, carrots)</li>
+            <li>Coriander, lemon</li>
+          </ul>
+          <h4>Method</h4>
+          <p>Cook lentils with turmeric and salt until soft (20 min). Separately, tadka: heat ghee with cumin, add onion-garlic-ginger and spices, fry briefly. Stir into lentils. For the curry side, dry-fry cauliflower and other veg with spices in minimal fat. Plate with coriander and lemon.</p>
+          <h4>Why it works</h4>
+          <p>The protein quality is lower than animal sources (lentils lack methionine optimally) but combining with a small amount of dairy or eggs elsewhere in the day fills the gap. The carbs are slow-release and gut-friendly. Useful for variety and for genuinely vegetarian days.</p>
+        </div>
+      </div>
+
+      <div class="meal-card" data-slot="dinner" data-day="psmf,training" data-prep="" data-carbs="ultra-low">
+        <div class="meal-card-tags">
+          <span class="tag slot">Dinner</span>
+          <span class="tag psmf">PSMF</span>
+          <span class="tag training-day">Training</span>
+        </div>
+        <div class="meal-card-title">Lean steak with asparagus & salad</div>
+        <div class="meal-card-desc">5%-fat lean steak, charred asparagus, peppery leaves, mustard-vinegar dressing. The PSMF "indulgence."</div>
+        <div class="meal-macros">
+          <div class="macro kcal"><span class="macro-value">360</span><span class="macro-label">kcal</span></div>
+          <div class="macro protein"><span class="macro-value">52g</span><span class="macro-label">protein</span></div>
+          <div class="macro carbs"><span class="macro-value">8g</span><span class="macro-label">carbs</span></div>
+          <div class="macro"><span class="macro-value">12g</span><span class="macro-label">fat</span></div>
+        </div>
+        <button class="meal-expand">View recipe</button>
+        <div class="meal-detail">
+          <h4>Ingredients</h4>
+          <ul>
+            <li>200g extra-lean steak (5% fat or lower)</li>
+            <li>200g asparagus</li>
+            <li>Mixed leaves (rocket, watercress)</li>
+            <li>Dijon mustard, red wine vinegar</li>
+            <li>Garlic, black pepper, sea salt</li>
+          </ul>
+          <h4>Method</h4>
+          <p>Rub steak with garlic, salt, and pepper. Heat pan very hot. Sear steak 2 min each side for medium-rare. Rest 5 min. Char asparagus in same pan. Whisk dressing from mustard and vinegar (no oil). Slice steak across the grain over salad and asparagus.</p>
+          <h4>Why it works</h4>
+          <p>The fat content is higher than other PSMF dinners but the protein density and the psychological satisfaction of a "real meal" makes it worth the trade. Lean cuts (5% fat eye round, sirloin, top side) keep total fat manageable while delivering iron, B12, and creatine that supplemental sources don't match.</p>
+        </div>
+      </div>
+
+      <div class="meal-card" data-slot="dinner" data-day="psmf,training" data-prep="">
+        <div class="meal-card-tags">
+          <span class="tag slot">Dinner</span>
+          <span class="tag psmf">PSMF</span>
+        </div>
+        <div class="meal-card-title">Prawn stir-fry with brassicas</div>
+        <div class="meal-card-desc">Cooked prawns, broccoli, bok choy, peppers, garlic, ginger, soy and chilli. Asian-inflected, very low calorie.</div>
+        <div class="meal-macros">
+          <div class="macro kcal"><span class="macro-value">280</span><span class="macro-label">kcal</span></div>
+          <div class="macro protein"><span class="macro-value">42g</span><span class="macro-label">protein</span></div>
+          <div class="macro carbs"><span class="macro-value">15g</span><span class="macro-label">carbs</span></div>
+          <div class="macro"><span class="macro-value">3g</span><span class="macro-label">fat</span></div>
+        </div>
+        <button class="meal-expand">View recipe</button>
+        <div class="meal-detail">
+          <h4>Ingredients</h4>
+          <ul>
+            <li>200g cooked king prawns</li>
+            <li>200g broccoli</li>
+            <li>100g bok choy or pak choi</li>
+            <li>1 red pepper</li>
+            <li>Garlic, ginger, fresh chilli</li>
+            <li>Light soy sauce, rice vinegar, lime</li>
+            <li>Spring onions, coriander</li>
+          </ul>
+          <h4>Method</h4>
+          <p>Heat pan or wok very hot with a splash of water (no oil). Add garlic, ginger, chilli for 30 seconds. Add broccoli and pepper, stir-fry 3 minutes. Add bok choy and prawns, toss briefly to warm through. Finish with soy, rice vinegar, and lime. Top with spring onion and coriander.</p>
+          <h4>Why it works</h4>
+          <p>Stir-frying with water and high heat instead of oil keeps the fat budget intact while preserving texture. Prawns are one of the lowest-fat animal proteins available. The brassica combination plus fresh ginger and chilli has anti-inflammatory and digestive benefits.</p>
+        </div>
+      </div>
+
+      <!-- === ADDITIONAL BREAKFAST === -->
+      <div class="meal-card" data-slot="breakfast" data-day="psmf,training" data-prep="fast" data-carbs="ultra-low">
+        <div class="meal-card-tags">
+          <span class="tag slot">Breakfast</span>
+          <span class="tag psmf">PSMF</span>
+          <span class="tag fast">Under 10 min</span>
+        </div>
+        <div class="meal-card-title">Egg white omelette with feta & spinach</div>
+        <div class="meal-card-desc">Fluffy egg white omelette with a controlled hit of feta, wilted spinach, tomatoes, and herbs. Ultra-low fat alternative to the whole-egg breakfast.</div>
+        <div class="meal-macros">
+          <div class="macro kcal"><span class="macro-value">250</span><span class="macro-label">kcal</span></div>
+          <div class="macro protein"><span class="macro-value">42g</span><span class="macro-label">protein</span></div>
+          <div class="macro carbs"><span class="macro-value">8g</span><span class="macro-label">carbs</span></div>
+          <div class="macro"><span class="macro-value">5g</span><span class="macro-label">fat</span></div>
+        </div>
+        <button class="meal-expand">View recipe</button>
+        <div class="meal-detail">
+          <h4>Ingredients</h4>
+          <ul>
+            <li>6 egg whites (or 200ml liquid whites)</li>
+            <li>30g feta cheese</li>
+            <li>100g spinach</li>
+            <li>Cherry tomatoes</li>
+            <li>Fresh basil or oregano</li>
+            <li>Garlic, salt, black pepper</li>
+          </ul>
+          <h4>Method</h4>
+          <p>Whisk whites with salt, pepper, and a splash of water until slightly foamy. Heat non-stick pan low-medium. Pour whites in, swirl. As they set, scatter wilted spinach, crumbled feta, and tomatoes on one half. Fold and slide onto plate. Top with herbs.</p>
+          <h4>Why it works</h4>
+          <p>The whole-egg breakfast brings 10g fat from yolks — fine most days but not always wanted. This swap keeps protein high while cutting the fat budget for days when later meals will use it (e.g. salmon dinner, smoked mackerel lunch). Feta provides the savoury hit and calcium without much fat.</p>
+        </div>
+      </div>
+
+      <div class="meal-card" data-slot="breakfast" data-day="psmf,training" data-prep="">
+        <div class="meal-card-tags">
+          <span class="tag slot">Breakfast</span>
+          <span class="tag psmf">PSMF</span>
+        </div>
+        <div class="meal-card-title">Savoury protein pancakes</div>
+        <div class="meal-card-desc">Cottage cheese and oat flour pancakes, savoury-coded with herbs and topped with smoked salmon or scrambled egg whites. PSMF dressed up.</div>
+        <div class="meal-macros">
+          <div class="macro kcal"><span class="macro-value">380</span><span class="macro-label">kcal</span></div>
+          <div class="macro protein"><span class="macro-value">48g</span><span class="macro-label">protein</span></div>
+          <div class="macro carbs"><span class="macro-value">22g</span><span class="macro-label">carbs</span></div>
+          <div class="macro"><span class="macro-value">10g</span><span class="macro-label">fat</span></div>
+        </div>
+        <button class="meal-expand">View recipe</button>
+        <div class="meal-detail">
+          <h4>Ingredients</h4>
+          <ul>
+            <li>150g 0% cottage cheese</li>
+            <li>30g oat flour (or blended oats)</li>
+            <li>2 whole eggs</li>
+            <li>1 scoop unflavoured or vanilla whey</li>
+            <li>Chopped chives, salt, pepper</li>
+            <li>Topping: 60g smoked salmon or 4 egg whites</li>
+            <li>Lemon, capers, watercress</li>
+          </ul>
+          <h4>Method</h4>
+          <p>Blend cottage cheese, oats, eggs, whey, and seasonings until smooth. Rest 5 min. Heat non-stick pan on medium. Pour small pancakes (3 per portion), cook 90 seconds each side. Top with smoked salmon or egg whites, capers, watercress, and lemon.</p>
+          <h4>Why it works</h4>
+          <p>Pancakes coded as a "real breakfast" psychologically, but the macros are pure PSMF — high protein, controlled carbs, low fat. Weekend or slow-morning meal when you want something more substantial than a yoghurt bowl.</p>
+        </div>
+      </div>
+
+      <div class="meal-card" data-slot="breakfast" data-day="training" data-prep="fast">
+        <div class="meal-card-tags">
+          <span class="tag slot">Breakfast</span>
+          <span class="tag training-day">Training</span>
+          <span class="tag fast">Under 10 min</span>
+        </div>
+        <div class="meal-card-title">Overnight oats with whey & banana</div>
+        <div class="meal-card-desc">Prep the night before, eat cold or warm in the morning. Sustained carbs and protein, pre-training friendly.</div>
+        <div class="meal-macros">
+          <div class="macro kcal"><span class="macro-value">450</span><span class="macro-label">kcal</span></div>
+          <div class="macro protein"><span class="macro-value">42g</span><span class="macro-label">protein</span></div>
+          <div class="macro carbs"><span class="macro-value">60g</span><span class="macro-label">carbs</span></div>
+          <div class="macro"><span class="macro-value">7g</span><span class="macro-label">fat</span></div>
+        </div>
+        <button class="meal-expand">View recipe</button>
+        <div class="meal-detail">
+          <h4>Ingredients</h4>
+          <ul>
+            <li>60g rolled oats</li>
+            <li>200ml unsweetened almond milk</li>
+            <li>1 scoop whey protein</li>
+            <li>100g 0% Greek yoghurt</li>
+            <li>1 medium banana</li>
+            <li>Cinnamon, pinch of salt</li>
+            <li>Optional: chia seeds (1 tsp)</li>
+          </ul>
+          <h4>Method</h4>
+          <p>Night before: mix oats, almond milk, yoghurt, cinnamon, and salt in a jar. Refrigerate. Morning: stir in whey (might need a splash more liquid), top with sliced banana. Eat cold or warm gently.</p>
+          <h4>Why it works</h4>
+          <p>Pre-prepped means zero morning friction. Sustained-release carbs from oats prime glycogen for training. Cold preparation means proteins aren't denatured by heat. Useful for training-day breakfasts where decision fatigue is the enemy.</p>
+        </div>
+      </div>
+
+      <!-- === MID-MORNING / SNACK === -->
+      <div class="meal-card" data-slot="mid-morning" data-day="psmf,training" data-prep="fast" data-carbs="ultra-low">
+        <div class="meal-card-tags">
+          <span class="tag slot">Mid-morning</span>
+          <span class="tag psmf">PSMF</span>
+          <span class="tag fast">Under 10 min</span>
+        </div>
+        <div class="meal-card-title">Boiled eggs with kimchi & avocado</div>
+        <div class="meal-card-desc">3 hard-boiled eggs, small portion of avocado, kimchi, sea salt. Quick, portable, high satiety.</div>
+        <div class="meal-macros">
+          <div class="macro kcal"><span class="macro-value">300</span><span class="macro-label">kcal</span></div>
+          <div class="macro protein"><span class="macro-value">22g</span><span class="macro-label">protein</span></div>
+          <div class="macro carbs"><span class="macro-value">8g</span><span class="macro-label">carbs</span></div>
+          <div class="macro"><span class="macro-value">20g</span><span class="macro-label">fat</span></div>
+        </div>
+        <button class="meal-expand">View recipe</button>
+        <div class="meal-detail">
+          <h4>Ingredients</h4>
+          <ul>
+            <li>3 hard-boiled eggs</li>
+            <li>1/4 avocado (40g)</li>
+            <li>80g kimchi</li>
+            <li>Sea salt, black pepper, chilli flakes</li>
+            <li>Optional: cherry tomatoes</li>
+          </ul>
+          <h4>Method</h4>
+          <p>Boil eggs 8 minutes for slightly soft yolk, 10 for firm. Cool in cold water, peel. Halve and arrange with sliced avocado and kimchi. Salt, pepper, chilli flakes to finish.</p>
+          <h4>Why it works</h4>
+          <p>Higher-fat option that works when other meals in the day are very low fat. The combination of egg yolks and a small amount of avocado provides choline, monounsaturated fats, and the satiety that low-fat meals sometimes lack. Best paired with very low-fat lunches and dinners.</p>
+        </div>
+      </div>
+
+      <div class="meal-card" data-slot="mid-morning" data-day="psmf,training" data-prep="fast" data-carbs="ultra-low">
+        <div class="meal-card-tags">
+          <span class="tag slot">Mid-morning</span>
+          <span class="tag psmf">PSMF</span>
+          <span class="tag fast">Under 10 min</span>
+        </div>
+        <div class="meal-card-title">Skyr with cucumber & smoked salmon</div>
+        <div class="meal-card-desc">Savoury skyr base with smoked salmon, diced cucumber, dill, lemon. Smørrebrød without the bread.</div>
+        <div class="meal-macros">
+          <div class="macro kcal"><span class="macro-value">250</span><span class="macro-label">kcal</span></div>
+          <div class="macro protein"><span class="macro-value">42g</span><span class="macro-label">protein</span></div>
+          <div class="macro carbs"><span class="macro-value">6g</span><span class="macro-label">carbs</span></div>
+          <div class="macro"><span class="macro-value">6g</span><span class="macro-label">fat</span></div>
+        </div>
+        <button class="meal-expand">View recipe</button>
+        <div class="meal-detail">
+          <h4>Ingredients</h4>
+          <ul>
+            <li>200g skyr or 0% Greek yoghurt</li>
+            <li>60g smoked salmon</li>
+            <li>1/2 cucumber, diced fine</li>
+            <li>Fresh dill, generous</li>
+            <li>Capers, lemon, black pepper</li>
+            <li>Optional: chives, mustard</li>
+          </ul>
+          <h4>Method</h4>
+          <p>Spoon skyr into a wide bowl. Top with strips of smoked salmon, diced cucumber, capers, and a snowfall of dill. Squeeze lemon, crack pepper. Eat layered or stirred.</p>
+          <h4>Why it works</h4>
+          <p>Skyr is technically a strained yoghurt with one of the highest protein-to-calorie ratios available (around 11g protein per 100g, almost no fat). Salmon adds omega-3, dill and capers carry the flavour. Feels like a "proper meal" despite assembling in 3 minutes.</p>
+        </div>
+      </div>
+
+      <!-- === ADDITIONAL LUNCH === -->
+      <div class="meal-card" data-slot="lunch" data-day="psmf,training" data-prep="">
+        <div class="meal-card-tags">
+          <span class="tag slot">Lunch</span>
+          <span class="tag psmf">PSMF</span>
+          <span class="tag training-day">Training</span>
+        </div>
+        <div class="meal-card-title">Korean-style chicken bowl</div>
+        <div class="meal-card-desc">Marinated chicken breast, gochujang glaze, large bed of greens, kimchi, sesame, lime. Big flavour, controlled macros.</div>
+        <div class="meal-macros">
+          <div class="macro kcal"><span class="macro-value">320</span><span class="macro-label">kcal</span></div>
+          <div class="macro protein"><span class="macro-value">50g</span><span class="macro-label">protein</span></div>
+          <div class="macro carbs"><span class="macro-value">14g</span><span class="macro-label">carbs</span></div>
+          <div class="macro"><span class="macro-value">5g</span><span class="macro-label">fat</span></div>
+        </div>
+        <button class="meal-expand">View recipe</button>
+        <div class="meal-detail">
+          <h4>Ingredients</h4>
+          <ul>
+            <li>180g chicken breast, sliced</li>
+            <li>1 tsp gochujang, 1 tsp soy, 1 tsp rice vinegar</li>
+            <li>Garlic, ginger, sesame seeds</li>
+            <li>Mixed leaves + cucumber + radish</li>
+            <li>100g kimchi</li>
+            <li>Lime, spring onion, coriander</li>
+          </ul>
+          <h4>Method</h4>
+          <p>Marinate chicken in gochujang, soy, vinegar, garlic, ginger for 10 min. Pan-grill 4 min until cooked. Pile greens, cucumber, radish into a wide bowl. Top with chicken, kimchi, sesame seeds, lime wedge, spring onion. Finish with coriander.</p>
+          <h4>Why it works</h4>
+          <p>The flavour profile carries this meal — gochujang has umami depth that makes plain chicken breast taste like restaurant food. The fermented sides (gochujang itself, kimchi) compound the satiety effect. Bigger flavour means less perceived restriction.</p>
+        </div>
+      </div>
+
+      <div class="meal-card" data-slot="lunch" data-day="psmf,training" data-prep="">
+        <div class="meal-card-tags">
+          <span class="tag slot">Lunch</span>
+          <span class="tag psmf">PSMF</span>
+        </div>
+        <div class="meal-card-title">Tofu, edamame & vegetable stir-fry</div>
+        <div class="meal-card-desc">Pressed firm tofu with shelled edamame, brassicas, soy-ginger glaze. Vegetarian PSMF lunch.</div>
+        <div class="meal-macros">
+          <div class="macro kcal"><span class="macro-value">340</span><span class="macro-label">kcal</span></div>
+          <div class="macro protein"><span class="macro-value">36g</span><span class="macro-label">protein</span></div>
+          <div class="macro carbs"><span class="macro-value">18g</span><span class="macro-label">carbs</span></div>
+          <div class="macro"><span class="macro-value">12g</span><span class="macro-label">fat</span></div>
+        </div>
+        <button class="meal-expand">View recipe</button>
+        <div class="meal-detail">
+          <h4>Ingredients</h4>
+          <ul>
+            <li>200g extra-firm tofu, pressed and cubed</li>
+            <li>100g shelled edamame</li>
+            <li>200g broccoli</li>
+            <li>100g bok choy</li>
+            <li>Garlic, ginger, fresh chilli</li>
+            <li>Light soy, rice vinegar, sesame oil (1 tsp)</li>
+            <li>Spring onion, sesame seeds</li>
+          </ul>
+          <h4>Method</h4>
+          <p>Press tofu 10 min to remove water. Cube. Heat non-stick pan very hot with sesame oil. Sear tofu on all sides until golden, 6 min total. Remove. Stir-fry broccoli with garlic and ginger 3 min. Add bok choy and edamame, toss 90 sec. Return tofu. Finish with soy, vinegar, sesame seeds, spring onion.</p>
+          <h4>Why it works</h4>
+          <p>Edamame plus tofu delivers complete plant protein around 36g — close to animal source meals. The sesame oil is the only fat source (1 tsp = 5g fat) which keeps the meal in PSMF range. Good rotation option for genuinely vegetarian days or just for variety.</p>
+        </div>
+      </div>
+
+      <!-- === ADDITIONAL AFTERNOON === -->
+      <div class="meal-card" data-slot="afternoon" data-day="psmf,training" data-prep="fast">
+        <div class="meal-card-tags">
+          <span class="tag slot">Afternoon</span>
+          <span class="tag psmf">PSMF</span>
+          <span class="tag fast">Under 10 min</span>
+        </div>
+        <div class="meal-card-title">Protein shake & apple</div>
+        <div class="meal-card-desc">When even cottage cheese feels like effort. Whey isolate in water, an apple on the side, maybe a few almonds.</div>
+        <div class="meal-macros">
+          <div class="macro kcal"><span class="macro-value">230</span><span class="macro-label">kcal</span></div>
+          <div class="macro protein"><span class="macro-value">28g</span><span class="macro-label">protein</span></div>
+          <div class="macro carbs"><span class="macro-value">22g</span><span class="macro-label">carbs</span></div>
+          <div class="macro"><span class="macro-value">3g</span><span class="macro-label">fat</span></div>
+        </div>
+        <button class="meal-expand">View recipe</button>
+        <div class="meal-detail">
+          <h4>Ingredients</h4>
+          <ul>
+            <li>1 scoop whey protein isolate</li>
+            <li>300ml water</li>
+            <li>1 medium apple</li>
+            <li>Optional: 5–6 almonds</li>
+            <li>Optional: cinnamon</li>
+          </ul>
+          <h4>Method</h4>
+          <p>Shake whey with water. Eat apple slowly alongside. Optional almonds if you need a small amount of fat to make it feel like more.</p>
+          <h4>Why it works</h4>
+          <p>Lowest-effort PSMF snack. Useful between heavier meals when you don't want to add prep but need to hit protein. The apple provides volume, fibre, and chew time that pure liquid protein doesn't. Almonds optional — adds satiety but pushes the fat content.</p>
+        </div>
+      </div>
+
+      <!-- === ADDITIONAL DINNER === -->
+      <div class="meal-card" data-slot="dinner" data-day="psmf,training" data-prep="">
+        <div class="meal-card-tags">
+          <span class="tag slot">Dinner</span>
+          <span class="tag psmf">PSMF</span>
+          <span class="tag training-day">Training</span>
+        </div>
+        <div class="meal-card-title">Chicken thigh tray bake with roasted veg</div>
+        <div class="meal-card-desc">Skinless thighs (more flavour than breast), roasted brassicas, cherry tomatoes, lemon, herbs. One tray, minimal effort, big flavour.</div>
+        <div class="meal-macros">
+          <div class="macro kcal"><span class="macro-value">380</span><span class="macro-label">kcal</span></div>
+          <div class="macro protein"><span class="macro-value">42g</span><span class="macro-label">protein</span></div>
+          <div class="macro carbs"><span class="macro-value">14g</span><span class="macro-label">carbs</span></div>
+          <div class="macro"><span class="macro-value">14g</span><span class="macro-label">fat</span></div>
+        </div>
+        <button class="meal-expand">View recipe</button>
+        <div class="meal-detail">
+          <h4>Ingredients</h4>
+          <ul>
+            <li>200g skinless boneless chicken thighs</li>
+            <li>200g broccoli florets</li>
+            <li>150g cauliflower florets</li>
+            <li>Cherry tomatoes (handful)</li>
+            <li>Garlic cloves, lemon, rosemary, thyme</li>
+            <li>Paprika, salt, pepper</li>
+            <li>1 tsp olive oil (sparing)</li>
+          </ul>
+          <h4>Method</h4>
+          <p>Heat oven to 200°C. Toss vegetables with garlic, herbs, paprika, salt, pepper, and the teaspoon of olive oil. Spread on tray. Sit chicken thighs on top, season. Halve a lemon and add to tray. Roast 25–30 min until chicken is golden and vegetables charred at the edges. Squeeze roasted lemon over before serving.</p>
+          <h4>Why it works</h4>
+          <p>Chicken thighs are slightly higher fat than breast (around 8g vs 3g per 180g serving) but the flavour is significantly better and the meal feels more satisfying. Roasting concentrates the vegetable sweetness without added carbs. One-tray method makes it almost effortless.</p>
+        </div>
+      </div>
+
+      <div class="meal-card" data-slot="dinner" data-day="psmf,training" data-prep="">
+        <div class="meal-card-tags">
+          <span class="tag slot">Dinner</span>
+          <span class="tag psmf">PSMF</span>
+        </div>
+        <div class="meal-card-title">Spicy turkey & cauliflower rice</div>
+        <div class="meal-card-desc">Lean ground turkey with cumin, smoked paprika, chilli, served over cauliflower rice with kimchi and lime. Comfort meal, very low calorie.</div>
+        <div class="meal-macros">
+          <div class="macro kcal"><span class="macro-value">300</span><span class="macro-label">kcal</span></div>
+          <div class="macro protein"><span class="macro-value">48g</span><span class="macro-label">protein</span></div>
+          <div class="macro carbs"><span class="macro-value">14g</span><span class="macro-label">carbs</span></div>
+          <div class="macro"><span class="macro-value">5g</span><span class="macro-label">fat</span></div>
+        </div>
+        <button class="meal-expand">View recipe</button>
+        <div class="meal-detail">
+          <h4>Ingredients</h4>
+          <ul>
+            <li>200g lean ground turkey (2% fat)</li>
+            <li>300g cauliflower rice (pre-riced or grated)</li>
+            <li>Onion, garlic, fresh chilli</li>
+            <li>Cumin, smoked paprika, chilli powder, oregano</li>
+            <li>1 tbsp tomato puree</li>
+            <li>100g kimchi (side)</li>
+            <li>Lime, coriander, spring onion</li>
+          </ul>
+          <h4>Method</h4>
+          <p>Brown turkey in a dry hot pan, breaking it up. Add onion, garlic, chilli, spices, and tomato puree. Cook 5 min until fragrant and turkey is well-coated. Separately, dry-fry cauliflower rice 4 min until tender but with bite. Plate cauliflower rice, top with turkey mix, side of kimchi, lime, coriander, spring onion.</p>
+          <h4>Why it works</h4>
+          <p>Cauliflower rice is a real volume tool — 300g cooked replaces what would otherwise be 60g of basmati (around 200 kcal saved) while delivering similar texture and bite. The spice mix carries the meal mentally — you don't feel like you're eating "diet food."</p>
+        </div>
+      </div>
+
+      <!-- === ULTRA-LOW CARB ADDITIONS === -->
+      <div class="meal-card" data-slot="dinner" data-day="psmf,training" data-prep="" data-carbs="ultra-low">
+        <div class="meal-card-tags">
+          <span class="tag slot">Dinner</span>
+          <span class="tag psmf">PSMF</span>
+          <span class="tag training-day">Training</span>
+        </div>
+        <div class="meal-card-title">Baked cod with lemon greens</div>
+        <div class="meal-card-desc">Cod baked en papillote with lemon and dill, served with garlic-wilted spinach, asparagus, and a side of kimchi. Near-zero carb dinner.</div>
+        <div class="meal-macros">
+          <div class="macro kcal"><span class="macro-value">250</span><span class="macro-label">kcal</span></div>
+          <div class="macro protein"><span class="macro-value">46g</span><span class="macro-label">protein</span></div>
+          <div class="macro carbs"><span class="macro-value">8g</span><span class="macro-label">carbs</span></div>
+          <div class="macro"><span class="macro-value">2g</span><span class="macro-label">fat</span></div>
+        </div>
+        <button class="meal-expand">View recipe</button>
+        <div class="meal-detail">
+          <h4>Ingredients</h4>
+          <ul>
+            <li>200g cod fillet</li>
+            <li>150g spinach</li>
+            <li>200g asparagus</li>
+            <li>2 garlic cloves</li>
+            <li>Lemon, fresh dill, parsley</li>
+            <li>50g kimchi (side)</li>
+            <li>Salt, black pepper</li>
+          </ul>
+          <h4>Method</h4>
+          <p>Heat oven to 200°C. Place cod on parchment with lemon slices, dill, salt, pepper. Wrap into a parcel. Bake 12 minutes. Meanwhile, steam asparagus 4 min. Wilt spinach in dry pan with garlic 90 sec. Plate cod with greens, kimchi on the side, parsley to finish.</p>
+          <h4>Why it works</h4>
+          <p>The lowest-carb dinner in the set. Cod is essentially pure protein with negligible fat — useful when you're at the upper edge of your fat budget for the day or want to leave room for higher-fat meals tomorrow. The papillote method keeps the fish moist without needing added oil.</p>
+        </div>
+      </div>
+
+      <div class="meal-card" data-slot="lunch" data-day="psmf,training" data-prep="fast" data-carbs="ultra-low">
+        <div class="meal-card-tags">
+          <span class="tag slot">Lunch</span>
+          <span class="tag psmf">PSMF</span>
+          <span class="tag fast">Under 10 min</span>
+        </div>
+        <div class="meal-card-title">Chicken & egg power salad</div>
+        <div class="meal-card-desc">Pre-cooked chicken breast, hard-boiled eggs, leaves, capers, mustard-vinegar dressing. Built around protein density, near-zero carb.</div>
+        <div class="meal-macros">
+          <div class="macro kcal"><span class="macro-value">340</span><span class="macro-label">kcal</span></div>
+          <div class="macro protein"><span class="macro-value">52g</span><span class="macro-label">protein</span></div>
+          <div class="macro carbs"><span class="macro-value">5g</span><span class="macro-label">carbs</span></div>
+          <div class="macro"><span class="macro-value">12g</span><span class="macro-label">fat</span></div>
+        </div>
+        <button class="meal-expand">View recipe</button>
+        <div class="meal-detail">
+          <h4>Ingredients</h4>
+          <ul>
+            <li>150g pre-cooked chicken breast, sliced</li>
+            <li>2 hard-boiled eggs, halved</li>
+            <li>150g mixed leaves (rocket, watercress, spinach)</li>
+            <li>Capers, sliced red onion</li>
+            <li>Dijon mustard, red wine vinegar</li>
+            <li>Black pepper, herbs</li>
+          </ul>
+          <h4>Method</h4>
+          <p>Pile leaves into a wide bowl. Top with chicken, halved eggs, capers, onion. Whisk dressing from mustard, vinegar, and a splash of water (no oil). Drizzle over, finish with black pepper and herbs.</p>
+          <h4>Why it works</h4>
+          <p>Two protein sources stacked — chicken's leucine plus eggs' bioavailability — for 52g of protein in under 5 minutes. The mustard-vinegar dressing replaces oil-based dressings entirely; the sharp acidity carries the flavour without calorie cost. Pre-cooking chicken in bulk on a Sunday makes this a 3-minute assembly job.</p>
+        </div>
+      </div>
+
+      <div class="meal-card" data-slot="dinner" data-day="psmf,training" data-prep="" data-carbs="ultra-low">
+        <div class="meal-card-tags">
+          <span class="tag slot">Dinner</span>
+          <span class="tag psmf">PSMF</span>
+        </div>
+        <div class="meal-card-title">Beef carpaccio-style with rocket</div>
+        <div class="meal-card-desc">Thinly sliced lean beef seared briefly and served over peppery rocket with capers, lemon, mustard. Restaurant-quality, very low carb.</div>
+        <div class="meal-macros">
+          <div class="macro kcal"><span class="macro-value">320</span><span class="macro-label">kcal</span></div>
+          <div class="macro protein"><span class="macro-value">48g</span><span class="macro-label">protein</span></div>
+          <div class="macro carbs"><span class="macro-value">4g</span><span class="macro-label">carbs</span></div>
+          <div class="macro"><span class="macro-value">12g</span><span class="macro-label">fat</span></div>
+        </div>
+        <button class="meal-expand">View recipe</button>
+        <div class="meal-detail">
+          <h4>Ingredients</h4>
+          <ul>
+            <li>180g lean beef fillet or sirloin</li>
+            <li>150g rocket</li>
+            <li>2 tbsp capers</li>
+            <li>30g shaved parmesan (optional)</li>
+            <li>Dijon mustard, lemon, balsamic vinegar</li>
+            <li>Black pepper, sea salt</li>
+          </ul>
+          <h4>Method</h4>
+          <p>Pat beef dry, season with salt and pepper. Heat pan very hot, sear beef 30 seconds each side just to crust the outside while keeping the middle rare. Rest 5 min, then slice as thinly as possible across the grain. Arrange over rocket. Top with capers, optional parmesan, lemon juice, balsamic, mustard, cracked pepper.</p>
+          <h4>Why it works</h4>
+          <p>Looks like a restaurant plate, eats like a celebration meal, but the macros are pure PSMF. Beef seared rare retains more nutrients (B12, iron, creatine) than well-cooked. The capers and rocket carry the flavour aggressively, parmesan is optional shaved sparingly for an umami hit without much added fat.</p>
+        </div>
+      </div>
+
+      <div class="meal-card" data-slot="afternoon" data-day="psmf,training" data-prep="fast" data-carbs="ultra-low">
+        <div class="meal-card-tags">
+          <span class="tag slot">Afternoon</span>
+          <span class="tag psmf">PSMF</span>
+          <span class="tag fast">Under 10 min</span>
+        </div>
+        <div class="meal-card-title">Tuna in olive oil snack plate</div>
+        <div class="meal-card-desc">Drained tuna in olive oil (or spring water), olives, pickles, cherry tomatoes, lemon. Mediterranean assembly snack.</div>
+        <div class="meal-macros">
+          <div class="macro kcal"><span class="macro-value">220</span><span class="macro-label">kcal</span></div>
+          <div class="macro protein"><span class="macro-value">32g</span><span class="macro-label">protein</span></div>
+          <div class="macro carbs"><span class="macro-value">4g</span><span class="macro-label">carbs</span></div>
+          <div class="macro"><span class="macro-value">9g</span><span class="macro-label">fat</span></div>
+        </div>
+        <button class="meal-expand">View recipe</button>
+        <div class="meal-detail">
+          <h4>Ingredients</h4>
+          <ul>
+            <li>1 can tuna in olive oil (partially drained)</li>
+            <li>Handful kalamata olives</li>
+            <li>Pickles or pickled peppers</li>
+            <li>Cherry tomatoes</li>
+            <li>Lemon, oregano, black pepper</li>
+            <li>Optional: anchovies, sliced cucumber</li>
+          </ul>
+          <h4>Method</h4>
+          <p>Drain most of the oil from the tuna (keep about 1 tsp). Arrange on a plate with olives, pickles, tomatoes. Squeeze lemon, scatter oregano and pepper.</p>
+          <h4>Why it works</h4>
+          <p>Mediterranean-coded snack that feels indulgent because of the olives and the small amount of olive oil clinging to the tuna. The fat content is from monounsaturates which keep you satisfied without crashing energy. Five-minute assembly, no cooking, travels well.</p>
+        </div>
+      </div>
+
+      <div class="meal-card" data-slot="dinner" data-day="psmf,training" data-prep="" data-carbs="ultra-low">
+        <div class="meal-card-tags">
+          <span class="tag slot">Dinner</span>
+          <span class="tag psmf">PSMF</span>
+        </div>
+        <div class="meal-card-title">Chicken souvlaki with Greek salad</div>
+        <div class="meal-card-desc">Marinated chicken skewers, crisp Greek salad with feta, olives, cucumber, tomato, no pita. Big-flavour, low-carb.</div>
+        <div class="meal-macros">
+          <div class="macro kcal"><span class="macro-value">390</span><span class="macro-label">kcal</span></div>
+          <div class="macro protein"><span class="macro-value">50g</span><span class="macro-label">protein</span></div>
+          <div class="macro carbs"><span class="macro-value">10g</span><span class="macro-label">carbs</span></div>
+          <div class="macro"><span class="macro-value">15g</span><span class="macro-label">fat</span></div>
+        </div>
+        <button class="meal-expand">View recipe</button>
+        <div class="meal-detail">
+          <h4>Ingredients</h4>
+          <ul>
+            <li>200g chicken breast, cubed</li>
+            <li>Lemon, garlic, oregano, paprika (marinade)</li>
+            <li>1 tsp olive oil for marinade</li>
+            <li>Cucumber, tomatoes, red onion, green pepper</li>
+            <li>30g feta, kalamata olives</li>
+            <li>Red wine vinegar, dried oregano</li>
+          </ul>
+          <h4>Method</h4>
+          <p>Marinate chicken cubes in lemon, garlic, oregano, paprika, olive oil for 15 min minimum. Thread onto skewers. Grill or pan-cook 8 minutes total. For salad, chunk cucumber, tomato, onion, pepper. Top with crumbled feta and olives. Dress with vinegar and oregano.</p>
+          <h4>Why it works</h4>
+          <p>A meal that genuinely feels like eating out — Greek tavernas serve essentially this, just with added pita and rice. Removing the carb sides drops calories significantly while keeping the flavour intact. The feta is portioned controlled (30g) to keep fat reasonable.</p>
+        </div>
+      </div>
+
+      <div class="meal-card" data-slot="breakfast" data-day="psmf" data-prep="fast" data-carbs="ultra-low">
+        <div class="meal-card-tags">
+          <span class="tag slot">Breakfast</span>
+          <span class="tag psmf">PSMF</span>
+          <span class="tag fast">Under 10 min</span>
+        </div>
+        <div class="meal-card-title">Smoked salmon with cottage cheese</div>
+        <div class="meal-card-desc">Smoked salmon over savoury cottage cheese with capers, dill, lemon, cucumber. Two-protein stack, near-zero carb.</div>
+        <div class="meal-macros">
+          <div class="macro kcal"><span class="macro-value">280</span><span class="macro-label">kcal</span></div>
+          <div class="macro protein"><span class="macro-value">46g</span><span class="macro-label">protein</span></div>
+          <div class="macro carbs"><span class="macro-value">5g</span><span class="macro-label">carbs</span></div>
+          <div class="macro"><span class="macro-value">7g</span><span class="macro-label">fat</span></div>
+        </div>
+        <button class="meal-expand">View recipe</button>
+        <div class="meal-detail">
+          <h4>Ingredients</h4>
+          <ul>
+            <li>200g 0% cottage cheese</li>
+            <li>80g smoked salmon</li>
+            <li>1 tbsp capers</li>
+            <li>Fresh dill, generous</li>
+            <li>Cucumber, sliced</li>
+            <li>Lemon, black pepper</li>
+            <li>Optional: chives, mustard</li>
+          </ul>
+          <h4>Method</h4>
+          <p>Spread cottage cheese into a wide bowl or plate. Top with strips of smoked salmon, capers, generous dill. Arrange cucumber slices around. Lemon, pepper, chives to finish.</p>
+          <h4>Why it works</h4>
+          <p>Casein from cottage cheese plus the slow protein of smoked salmon gives sustained amino acid release for 3+ hours. Omega-3 content meaningful (around 1g EPA/DHA), choline from any added egg yolks (optional), and the salt-sour profile reads as savoury comfort food rather than diet food. Excellent breakfast on a near-zero-carb day.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="empty" id="empty">
+      <div class="empty-title">No meals match those filters.</div>
+      <div>Try widening the slot or clearing a filter.</div>
+    </div>
+
+    <div class="note-panel">
+      <div class="note-panel-label">Note on macros</div>
+      <div class="note-panel-text">All macros are approximate and assume standard ingredient compositions. Adjust portions to hit your daily protein, calorie, and carb targets — for a 5-meal PSMF rest day targeting 240g protein, this means roughly 48g protein per meal. On training days, increase carbs around the session and total calories accordingly (typically +400–600 kcal over rest day intake). Protein stays anchored either way. <br><br>The day type is a guideline, not a rule. A "training day" meal can fit a rest day that includes a long depleting cardio session — what matters is end-of-day glycogen state, not the dietary label. See the Substrate section of the protocol page for the full reasoning.</div>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-brand serif">compounding_gains</div>
+    <div class="footer-meta">FIELD MANUAL · v1.0 · 2026</div>
+  </div>
+</footer>
+
+<script>
+// === THEME TOGGLE ===
+const themeToggle = document.getElementById('themeToggle');
+const root = document.documentElement;
+const savedTheme = localStorage.getItem('theme') || 'dark';
+root.setAttribute('data-theme', savedTheme);
+themeToggle.textContent = savedTheme === 'dark' ? 'Light' : 'Dark';
+
+themeToggle.addEventListener('click', () => {
+  const current = root.getAttribute('data-theme');
+  const next = current === 'dark' ? 'light' : 'dark';
+  root.setAttribute('data-theme', next);
+  themeToggle.textContent = next === 'dark' ? 'Light' : 'Dark';
+  localStorage.setItem('theme', next);
+});
+
+// === FILTERS ===
+const filters = { slot: 'all', day: 'all', prep: 'all', carbs: 'all' };
+const cards = document.querySelectorAll('.meal-card');
+const empty = document.getElementById('empty');
+const resultCount = document.getElementById('resultCount');
+
+document.querySelectorAll('.filter-pills').forEach(group => {
+  const type = group.dataset.filter;
+  group.querySelectorAll('.filter-pill').forEach(pill => {
+    pill.addEventListener('click', () => {
+      group.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+      pill.classList.add('active');
+      filters[type] = pill.dataset.value;
+      applyFilters();
+    });
+  });
+});
+
+function applyFilters() {
+  let visible = 0;
+  cards.forEach(card => {
+    const slot = card.dataset.slot;
+    const days = (card.dataset.day || '').split(',');
+    const prep = card.dataset.prep || '';
+    const carbs = card.dataset.carbs || '';
+
+    const slotMatch = filters.slot === 'all' || slot === filters.slot;
+    const dayMatch = filters.day === 'all' || days.includes(filters.day);
+    const prepMatch = filters.prep === 'all' || prep === filters.prep;
+    const carbsMatch = filters.carbs === 'all' || carbs === filters.carbs;
+
+    if (slotMatch && dayMatch && prepMatch && carbsMatch) {
+      card.classList.remove('hidden');
+      visible++;
+    } else {
+      card.classList.add('hidden');
+    }
+  });
+  resultCount.textContent = `${visible} meal${visible === 1 ? '' : 's'}`;
+  empty.classList.toggle('show', visible === 0);
+}
+
+// === EXPAND/COLLAPSE ===
+document.querySelectorAll('.meal-expand').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const card = btn.closest('.meal-card');
+    card.classList.toggle('expanded');
+    btn.textContent = card.classList.contains('expanded') ? 'Hide recipe' : 'View recipe';
+  });
+});
+
+applyFilters();
+</script>
+</body>
+</html>
